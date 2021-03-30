@@ -1,6 +1,7 @@
 package com.mainthrowsexception.moodtrackingapp
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 
 class EntriesAdapter(
     private val entries: List<Entry>
@@ -32,8 +35,8 @@ class EntriesAdapter(
     class EntryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivEmoji: ImageView = itemView.findViewById(R.id.entry__iv_emoji)
         private val tvCreationTime: TextView = itemView.findViewById(R.id.entry__tv_creation_time)
-        private val btnEdit: Button = itemView.findViewById(R.id.entry__edit_button)
         private val layout: ConstraintLayout = itemView.findViewById(R.id.entry__layout)
+        private val cgTags: ChipGroup = itemView.findViewById(R.id.entry__cg_tags)
 
         @SuppressLint("ResourceAsColor")
         fun bind(entry: Entry) {
@@ -64,8 +67,15 @@ class EntriesAdapter(
                 }
             }
 
-//            у меня пока проблемесы с переводом Date в HH:mm, хотя казалось бы...
-            tvCreationTime.text = "10:61"
+            for (tag in entry.tags) {
+                val chip: Chip = Chip(itemView.context)
+                chip.text = tag
+                chip.setTextAppearanceResource(R.style.tag_text)
+                chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(itemView.context, R.color.dark_grey))
+                cgTags.addView(chip)
+            }
+
+            tvCreationTime.text = android.text.format.DateFormat.format("hh:mm", entry.time)
         }
     }
 }

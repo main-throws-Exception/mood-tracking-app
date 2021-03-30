@@ -4,4 +4,5 @@
     <dimen name="login_screen__button_height">36dp</dimen>
     <dimen name="login_screen__button_width">250dp</dimen>
     <dimen name="app_name_size">36sp</dimen>
+    <dimen name="tag_text_size">12sp</dimen>
 </resources>

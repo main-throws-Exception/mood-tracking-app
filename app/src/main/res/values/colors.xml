@@ -15,6 +15,7 @@
     <color name="green">#AED581</color>
     <color name="red">#BA6B6C</color>
     <color name="grey">#AEAEAE</color>
+    <color name="dark_grey">#616161</color>
 
 
 </resources>

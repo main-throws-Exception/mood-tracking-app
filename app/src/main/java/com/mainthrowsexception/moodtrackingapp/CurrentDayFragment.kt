@@ -12,8 +12,8 @@ import java.util.*
 
 class CurrentDayFragment : Fragment() {
 
-    var rvEntries : RecyclerView? = null
-    val entries = generateEntryList()
+    private var rvEntries : RecyclerView? = null
+    private val entries = generateEntryList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,17 +32,12 @@ private fun generateEntryList(): List<Entry> {
     return listOf(
         Entry(
             1,
-            listOf(),
+            listOf("asd", "qwe"),
             Date()
         ),
         Entry(
             2,
-            listOf(),
-            Date()
-        ),
-        Entry(
-            2,
-            listOf(),
+            listOf("zxc", "rtyrtyrty"),
             Date()
         ),
         Entry(
@@ -52,7 +47,7 @@ private fun generateEntryList(): List<Entry> {
         ),
         Entry(
             4,
-            listOf(),
+            listOf("aaa"),
             Date()
         ),
         Entry(
@@ -77,11 +72,6 @@ private fun generateEntryList(): List<Entry> {
         ),
         Entry(
             1,
-            listOf(),
-            Date()
-        ),
-        Entry(
-            3,
             listOf(),
             Date()
         ),
