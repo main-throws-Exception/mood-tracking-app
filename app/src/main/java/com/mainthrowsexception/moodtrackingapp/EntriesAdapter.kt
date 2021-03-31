@@ -67,6 +67,8 @@ class EntriesAdapter(
                 }
             }
 
+            cgTags.removeAllViews();
+
             for (tag in entry.tags) {
                 val chip: Chip = Chip(itemView.context)
                 chip.text = tag

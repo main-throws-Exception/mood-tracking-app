@@ -80,5 +80,35 @@ private fun generateEntryList(): List<Entry> {
             listOf(),
             Date()
         ),
+        Entry(
+            2,
+            listOf(),
+            Date()
+        ),
+        Entry(
+            1,
+            listOf(),
+            Date()
+        ),
+        Entry(
+            4,
+            listOf(),
+            Date()
+        ),
+        Entry(
+            2,
+            listOf(),
+            Date()
+        ),
+        Entry(
+            1,
+            listOf(),
+            Date()
+        ),
+        Entry(
+            4,
+            listOf(),
+            Date()
+        )
     )
 }
