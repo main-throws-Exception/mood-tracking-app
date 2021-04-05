@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:alpha="0.9">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@drawable/rectangle_frame"
+        android:text="perfect breakfast"
+        style="@style/tag_button"
+        android:paddingHorizontal="10dp"
+        />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/mood_tag__tail_iv"-->
+<!--        android:layout_width="10dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:src="@drawable/ic_mood_tag__tail"-->
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/mood_tag__body_tv"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:paddingStart="5dp"-->
+<!--        android:paddingEnd="5dp"-->
+<!--        android:paddingTop="3dp"-->
+<!--        android:text="perfect breakfast"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:background="@color/light_green"-->
+<!--        />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/mood_tag__head_iv"-->
+<!--        android:layout_width="10dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:src="@drawable/ic_mood_tag__head"-->
+<!--        />-->
+
+</LinearLayout>

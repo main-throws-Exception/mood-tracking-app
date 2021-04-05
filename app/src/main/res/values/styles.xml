@@ -6,4 +6,9 @@
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">@dimen/button_text_size</item>
     </style>
+    <style name="tag_button">
+        <item name="android:height">@dimen/tag_button_height</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/tag_text_size</item>
+    </style>
 </resources>
