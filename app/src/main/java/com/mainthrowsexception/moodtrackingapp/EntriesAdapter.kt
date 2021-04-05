@@ -29,7 +29,7 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
     override fun getItemCount(): Int {
         return entries.size
     }
-    
+
     inner class EntryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivEmoji: ImageView = itemView.findViewById(R.id.entry__iv_emoji)
         private val tvCreationTime: TextView = itemView.findViewById(R.id.entry__tv_creation_time)
