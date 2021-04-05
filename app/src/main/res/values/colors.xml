@@ -16,6 +16,11 @@
     <color name="red">#BA6B6C</color>
     <color name="grey">#AEAEAE</color>
     <color name="dark_grey">#616161</color>
-
-
+    <color name="very_light_grey">#C4C4C4</color>
+    <color name="light_red">#D25657</color>
+    <color name="very_light_red">#D36F70</color>
+    <color name="light_orange">#FFC268</color>
+    <color name="light_grey">#BEBEBF</color>
+    <color name="light_yellow">#F1E367</color>
+    <color name="light_green">#B6CB9E</color>
 </resources>
