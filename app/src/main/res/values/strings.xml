@@ -4,4 +4,6 @@
     <string name="sign_up">SIGN UP</string>
     <string name="lang_en">EN</string>
     <string name="app_logo_description">App logo</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>

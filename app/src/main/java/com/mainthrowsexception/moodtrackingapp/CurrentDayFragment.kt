@@ -1,10 +1,10 @@
 package com.mainthrowsexception.moodtrackingapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
@@ -12,17 +12,17 @@ import java.util.*
 
 class CurrentDayFragment : Fragment() {
 
-    private var rvEntries : RecyclerView? = null
+    private var rvEntries: RecyclerView? = null
     private val entries = generateEntryList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view:View = inflater.inflate(R.layout.fragment_current_day, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_current_day, container, false)
         rvEntries = view.findViewById(R.id.fragment_current_day__rv_entires)
         rvEntries!!.layoutManager = LinearLayoutManager(view.context)
-        rvEntries!!.adapter = EntriesAdapter(entries)
+        rvEntries!!.adapter = EntriesAdapter(entries as MutableList<Entry>)
 
         return view
     }
@@ -42,7 +42,7 @@ private fun generateEntryList(): List<Entry> {
         ),
         Entry(
             1,
-            listOf(),
+            listOf("tag", "another tag"),
             Date()
         ),
         Entry(
