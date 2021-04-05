@@ -1,0 +1,102 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/general_header">
+
+        <ListPreference
+            app:defaultValue="eng"
+            app:entries="@array/language_entries"
+            app:entryValues="@array/language_values"
+            app:iconSpaceReserved="false"
+            app:key="language"
+            app:title="@string/language_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            app:key="highlight"
+            app:title="@string/highlight_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:layout="@layout/devider"/>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/notifications_header">
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            app:key="notifications"
+            app:title="@string/notification_sending_title" />
+
+        <Preference
+            app:iconSpaceReserved="false"
+            app:key="notification_time"
+            app:title="Choose notifications' time" />
+
+
+        <ListPreference
+            app:defaultValue="0_00"
+            app:entries="@array/notifications_remove_entries"
+            app:entryValues="@array/notifications_remove_values"
+            app:iconSpaceReserved="false"
+            app:key="notification_remove"
+            app:title="@string/notification_remove_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:layout="@layout/devider"/>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/appearance_header">
+
+        <ListPreference
+            app:defaultValue="light"
+            app:entries="@array/theme_entries"
+            app:entryValues="@array/theme_values"
+            app:iconSpaceReserved="false"
+            app:key="theme"
+            app:title="@string/theme_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <Preference
+            android:widgetLayout="@layout/behavior_group"
+            app:iconSpaceReserved="false"
+            app:key="color"
+            app:title="Change colors" />
+
+        <Preference
+            android:widgetLayout="@layout/behavior_group"
+            app:iconSpaceReserved="false"
+            app:key="emoji"
+            app:title="Change emojis" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:layout="@layout/devider"/>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/data_header">
+
+        <Preference
+            app:iconSpaceReserved="false"
+            app:key="restore"
+            app:title="Restore data" />
+
+        <Preference
+            app:iconSpaceReserved="false"
+            app:key="export"
+            app:title="Export data" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

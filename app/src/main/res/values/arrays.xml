@@ -1,0 +1,40 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="language_entries">
+        <item>Russian</item>
+        <item>English</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>rus</item>
+        <item>eng</item>
+    </string-array>
+
+    <string-array name="notifications_remove_entries">
+        <item>Never</item>
+        <item>In 5 minutes </item>
+        <item>In 15 minutes </item>
+        <item>In 30 minutes </item>
+        <item>In 1 hour </item>
+        <item>In 2 hours </item>
+    </string-array>
+
+    <string-array name="notifications_remove_values">
+        <item>0_00</item>
+        <item>0_05</item>
+        <item>0_15</item>
+        <item>0_30</item>
+        <item>1_00</item>
+        <item>2_00</item>
+    </string-array>
+
+    <string-array name="theme_entries">
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
+</resources>
