@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 
 class SigningUpFragment : Fragment() {
 
@@ -16,9 +19,17 @@ class SigningUpFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_signing_up, container, false)
-        view.findViewById<AppCompatButton>(R.id.fragment_signing_up___signing_up_button).setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_fragment_signing_up_to_loginFragment)
-        )
+        val emailText: EditText = view.findViewById(R.id.fragment_signing_up__email)
+        val passwordText: EditText = view.findViewById(R.id.fragment_signing_up__password)
+        val toast: Toast = Toast.makeText(activity, "Fill all the fields first", Toast.LENGTH_SHORT)
+        view.findViewById<AppCompatButton>(R.id.fragment_signing_up___signing_up_button).setOnClickListener {
+            if (emailText.text.toString().trim().isEmpty() || passwordText.text.toString().trim().isEmpty()) {
+                toast.cancel()
+                toast.show()
+            } else {
+                view.findNavController().navigate(R.id.action_fragment_signing_up_to_loginFragment)
+            }
+        }
         return view
     }
 }
