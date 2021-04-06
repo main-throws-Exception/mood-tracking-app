@@ -7,11 +7,11 @@
     tools:context=".MainActivity"
     android:background="@drawable/main_background">
 
-<!--    <fragment-->
-<!--        android:id="@+id/fCurrentDay"-->
-<!--        android:name="com.mainthrowsexception.moodtrackingapp.CurrentDayFragment"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
+    <fragment
+        android:id="@+id/fCurrentDay"
+        android:name="com.mainthrowsexception.moodtrackingapp.CalendarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_view"

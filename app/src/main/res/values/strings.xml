@@ -8,5 +8,29 @@
     <string name="calendar">Calendar</string>
     <string name="charts">Charts</string>
     <string name="settings">Settings</string>
+    <string name="general_header">General</string>
+    <string name="notifications_header">Notifications</string>
+    <string name="appearance_header">Appearance</string>
+    <string name="data_header">Data</string>
 
+    <string name="signature_title">Your signature</string>
+    <string name="language_title">Language</string>
+    <string name="highlight_title">Highlight days with notes</string>
+    <string name="notification_sending_title">Send notifications</string>
+    <string name="notification_remove_title">Remove notifications</string>
+    <string name="theme_title">Theme</string>
+
+    <string name="color_scheme_title">Current color scheme</string>
+    <string name="saved_color_presets_title">Saved color Schemes</string>
+    <string name="color_presets_title">Presets</string>
+    <string name="notifications_title">Notifications</string>
+
+    <string name="new_notification_button_text">Add new notification</string>
+
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email_here">Email Address</string>
+    <string name="password_here">Password</string>
 </resources>

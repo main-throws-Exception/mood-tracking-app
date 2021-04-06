@@ -29,14 +29,24 @@
         app:layout_constraintBottom_toBottomOf="@+id/entry__iv_emoji"
         tools:text="time" />
 
-    <Button
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/entry__cg_tags"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/entry__tv_creation_time"
+        app:layout_constraintEnd_toStartOf="@+id/entry__edit_button"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/entry__edit_button"
         android:layout_width="35dp"
         android:layout_height="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/entry__iv_emoji"
         app:layout_constraintBottom_toBottomOf="@+id/entry__iv_emoji"
-        android:background="@drawable/ic_edit_btn"
-        />
+        android:background="@drawable/ic_edit_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
