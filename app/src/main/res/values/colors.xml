@@ -23,4 +23,9 @@
     <color name="light_grey">#BEBEBF</color>
     <color name="light_yellow">#F1E367</color>
     <color name="light_green">#B6CB9E</color>
+    <color name="very_bad_mood">#BA6B6C</color>
+    <color name="bad_mood">#FFC268</color>
+    <color name="neutral_mood">#AEAEAE</color>
+    <color name="good_mood">#A3C181</color>
+    <color name="very_good_mood">#83E116</color>
 </resources>
