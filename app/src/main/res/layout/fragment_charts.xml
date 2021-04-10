@@ -16,6 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="500dp"/>
 
+        <fragment
+            android:id="@+id/fMoodLineChart"
+            android:name="com.mainthrowsexception.moodtrackingapp.MoodLineChartFragment"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"/>
 
     </LinearLayout>
 

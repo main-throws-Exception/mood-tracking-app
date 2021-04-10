@@ -30,13 +30,6 @@ class EntryFragment : Fragment() {
         }
     }
 
-    fun setNewMoodEntry(fragmentManager: FragmentManager) {
-        val fragmentTransaction = fragmentManager.beginTransaction()
-
-        fragmentTransaction.replace()
-        fragmentTransaction.commit()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
