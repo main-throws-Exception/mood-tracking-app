@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_fragment_logging_in"
+            app:destination="@id/fragment_logging_in" />
+        <action
+            android:id="@+id/action_loginFragment_to_fragment_signing_up"
+            app:destination="@id/fragment_signing_up" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_logging_in"
+        android:name="com.mainthrowsexception.moodtrackingapp.LoggingInFragment"
+        android:label="fragment_logging_in"
+        tools:layout="@layout/fragment_logging_in" >
+        <action
+            android:id="@+id/action_fragment_logging_in_to_currentDayFragment"
+            app:destination="@id/currentDayFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_signing_up"
+        android:name="com.mainthrowsexception.moodtrackingapp.SigningUpFragment"
+        android:label="fragment_signing_up"
+        tools:layout="@layout/fragment_signing_up" >
+        <action
+            android:id="@+id/action_fragment_signing_up_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/currentDayFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.CurrentDayFragment"
+        android:label="fragment_current_day"
+        tools:layout="@layout/fragment_current_day" />
+</navigation>

@@ -35,5 +35,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bottom_nav_view"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_nav_view"/>
+    <!--    <fragment-->
+    <!--        android:id="@+id/fCurrentDay"-->
+    <!--        android:name="com.mainthrowsexception.moodtrackingapp.CurrentDayFragment"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
+
+    <fragment
+        android:id="@+id/activity_main__nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
