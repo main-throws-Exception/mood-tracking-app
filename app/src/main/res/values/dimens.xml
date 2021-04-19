@@ -6,4 +6,5 @@
     <dimen name="app_name_size">36sp</dimen>
     <dimen name="tag_text_size">12sp</dimen>
     <dimen name="tag_button_height">30dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>
