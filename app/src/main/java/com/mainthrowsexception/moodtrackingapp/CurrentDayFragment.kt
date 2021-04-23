@@ -114,10 +114,6 @@ private fun generateEntryList(): List<Entry> {
             4,
             listOf(),
             Date()
-        )
-            1,
-            listOf(),
-            Date()
         ),
         Entry(
             1,

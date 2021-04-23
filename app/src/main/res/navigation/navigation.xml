@@ -43,5 +43,28 @@
         android:id="@+id/currentDayFragment"
         android:name="com.mainthrowsexception.moodtrackingapp.CurrentDayFragment"
         android:label="fragment_current_day"
-        tools:layout="@layout/fragment_current_day" />
+        tools:layout="@layout/fragment_current_day" >
+        <action
+            android:id="@+id/action_currentDayFragment_to_entryFragment"
+            app:destination="@id/entryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/entryFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.EntryFragment"
+        android:label="fragment_entry"
+        tools:layout="@layout/fragment_entry" />
+    <fragment
+        android:id="@+id/chartsFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.ChartsFragment"
+        android:label="fragment_charts"
+        tools:layout="@layout/fragment_charts" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
