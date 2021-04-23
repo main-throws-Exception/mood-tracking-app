@@ -4,49 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/main_background">
+    android:background="@drawable/main_background"
+    tools:context=".MainActivity">
 
-    <fragment
-        android:id="@+id/fCurrentDay"
-        android:name="com.mainthrowsexception.moodtrackingapp.CalendarFragment"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/activity_main__nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav_view"
+        app:navGraph="@navigation/navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/blue"
+        android:visibility="gone"
         app:elevation="0dp"
         app:itemIconSize="24dp"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_bar"/>
+        app:menu="@menu/bottom_nav_bar" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bottom_nav_view_button"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:gravity="center"
         android:background="@drawable/ic_add"
-        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bottom_nav_view"
-        app:layout_constraintBottom_toBottomOf="@+id/bottom_nav_view"/>
-    <!--    <fragment-->
-    <!--        android:id="@+id/fCurrentDay"-->
-    <!--        android:name="com.mainthrowsexception.moodtrackingapp.CurrentDayFragment"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent" />-->
-
-    <fragment
-        android:id="@+id/activity_main__nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/navigation" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

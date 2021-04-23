@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChartsFragment">
+    tools:context=".ChartsFragment"
+    android:layout_marginBottom="60dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,19 +15,22 @@
             android:id="@+id/fMoodPieChart"
             android:name="com.mainthrowsexception.moodtrackingapp.MoodPieChartFragment"
             android:layout_width="match_parent"
-            android:layout_height="500dp"/>
+            android:layout_height="500dp" />
 
         <fragment
             android:id="@+id/fMoodLineChart"
             android:name="com.mainthrowsexception.moodtrackingapp.MoodLineChartFragment"
             android:layout_width="match_parent"
-            android:layout_height="500dp"/>
+            android:layout_height="500dp" />
+
+        <fragment
+            android:id="@+id/fTagsPieChart"
+            android:name="com.mainthrowsexception.moodtrackingapp.TagsPieChartsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="500dp" />
+
 
     </LinearLayout>
-
-
-
-
 
 
 </androidx.core.widget.NestedScrollView>
