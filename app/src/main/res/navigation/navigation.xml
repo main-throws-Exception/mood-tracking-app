@@ -43,11 +43,7 @@
         android:id="@+id/currentDayFragment"
         android:name="com.mainthrowsexception.moodtrackingapp.CurrentDayFragment"
         android:label="fragment_current_day"
-        tools:layout="@layout/fragment_current_day" >
-        <action
-            android:id="@+id/action_currentDayFragment_to_entryFragment"
-            app:destination="@id/entryFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_current_day" />
     <fragment
         android:id="@+id/entryFragment"
         android:name="com.mainthrowsexception.moodtrackingapp.EntryFragment"

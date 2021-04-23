@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             .setupWithNavController(navController)
         findViewById<AppCompatButton>(R.id.bottom_nav_view_button)
             .setOnClickListener {
-                navController.navigate(R.id.action_currentDayFragment_to_entryFragment)
+                navController.navigate(R.id.entryFragment)
             }
     }
 }
