@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_background"
-    tools:context=".MainActivity">
+    android:background="@drawable/login_background"
+    tools:context=".screen.common.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/activity_main__nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="0dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav_view"
         app:navGraph="@navigation/navigation" />

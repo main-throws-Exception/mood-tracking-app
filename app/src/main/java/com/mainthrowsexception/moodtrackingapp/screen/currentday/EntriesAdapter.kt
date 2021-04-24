@@ -1,4 +1,4 @@
-package com.mainthrowsexception.moodtrackingapp
+package com.mainthrowsexception.moodtrackingapp.screen.currentday
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -14,6 +14,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.mainthrowsexception.moodtrackingapp.R
+import com.mainthrowsexception.moodtrackingapp.entry.model.Entry
+import java.util.*
 
 class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Adapter<EntriesAdapter.EntryViewHolder>() {
 
@@ -67,12 +70,12 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
                 1 -> {
                     ivEmoji.setImageResource(R.drawable.ic_very_sad_emoji)
                     layout.background =
-                        ContextCompat.getDrawable(itemView.context, R.drawable.mood_very_bad_bg);
+                        ContextCompat.getDrawable(itemView.context, R.drawable.mood_very_bad_bg)
                 }
                 2 -> {
                     ivEmoji.setImageResource(R.drawable.ic_sad_emoji)
                     layout.background =
-                        ContextCompat.getDrawable(itemView.context, R.drawable.mood_bad_bg);
+                        ContextCompat.getDrawable(itemView.context, R.drawable.mood_bad_bg)
                 }
                 3 -> {
                     ivEmoji.setImageResource(R.drawable.ic_neutral_emoji)
@@ -81,26 +84,28 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
                 4 -> {
                     ivEmoji.setImageResource(R.drawable.ic_happy_emoji)
                     layout.background =
-                        ContextCompat.getDrawable(itemView.context, R.drawable.mood_good_bg);
+                        ContextCompat.getDrawable(itemView.context, R.drawable.mood_good_bg)
                 }
                 5 -> {
                     ivEmoji.setImageResource(R.drawable.ic_very_happy_emoji)
                     layout.background =
-                        ContextCompat.getDrawable(itemView.context, R.drawable.mood_very_good_bg);
+                        ContextCompat.getDrawable(itemView.context, R.drawable.mood_very_good_bg)
                 }
             }
 
-            cgTags.removeAllViews();
+            cgTags.removeAllViews()
 
             for (tag in entry.tags) {
-                val chip: Chip = Chip(itemView.context)
+                val chip = Chip(itemView.context)
                 chip.text = tag
                 chip.setTextAppearanceResource(R.style.tag_text)
-                chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(itemView.context, R.color.dark_grey))
+                chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(itemView.context,
+                    R.color.dark_grey
+                ))
                 cgTags.addView(chip)
             }
 
-            tvCreationTime.text = android.text.format.DateFormat.format("hh:mm", entry.time)
+            tvCreationTime.text = android.text.format.DateFormat.format("hh:mm", Date(entry.created))
         }
     }
 }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChartsFragment"
+    tools:context=".screen.charts.ChartsFragment"
     android:layout_marginBottom="60dp">
 
     <LinearLayout
@@ -11,21 +11,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fMoodPieChart"
-            android:name="com.mainthrowsexception.moodtrackingapp.MoodPieChartFragment"
+            android:name="com.mainthrowsexception.moodtrackingapp.screen.charts.MoodPieChartFragment"
             android:layout_width="match_parent"
             android:layout_height="500dp" />
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fMoodLineChart"
-            android:name="com.mainthrowsexception.moodtrackingapp.MoodLineChartFragment"
+            android:name="com.mainthrowsexception.moodtrackingapp.screen.charts.MoodLineChartFragment"
             android:layout_width="match_parent"
             android:layout_height="500dp" />
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fTagsPieChart"
-            android:name="com.mainthrowsexception.moodtrackingapp.TagsPieChartsFragment"
+            android:name="com.mainthrowsexception.moodtrackingapp.screen.charts.TagsPieChartFragment"
             android:layout_width="match_parent"
             android:layout_height="500dp" />
 

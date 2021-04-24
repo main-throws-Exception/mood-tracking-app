@@ -122,4 +122,13 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="emoji">emoji</string>
+    <string name="slider">slider</string>
+    <string name="terrible_point">terrible_point</string>
+    <string name="bad_point">bad_point</string>
+    <string name="neutral_point">neutral_point</string>
+    <string name="good_point">good_point</string>
+    <string name="excellent">excellent</string>
+    <string name="slider_thumb">slider_thumb</string>
+    <string name="tick">tick</string>
 </resources>

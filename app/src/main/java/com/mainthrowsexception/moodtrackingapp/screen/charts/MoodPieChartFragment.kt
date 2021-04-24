@@ -1,4 +1,4 @@
-package com.mainthrowsexception.moodtrackingapp
+package com.mainthrowsexception.moodtrackingapp.screen.charts
 
 import android.graphics.Color
 import android.os.Bundle
@@ -11,6 +11,7 @@ import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.mainthrowsexception.moodtrackingapp.R
 
 
 class MoodPieChartFragment : Fragment() {
@@ -18,7 +19,7 @@ class MoodPieChartFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view: View =  inflater.inflate(R.layout.fragment_mood_pie_chart, container, false)
         val pieChart: PieChart = view.findViewById(R.id.chart__mood_pie)
         val moodList = ArrayList<PieEntry>()
@@ -41,7 +42,7 @@ class MoodPieChartFragment : Fragment() {
         pieDataSet.valueTextColor = Color.BLACK
         pieDataSet.valueTextSize = 16f
 
-        val pieData: PieData = PieData(pieDataSet)
+        val pieData = PieData(pieDataSet)
         pieChart.description.isEnabled = false
         pieChart.centerText = "Mood"
         pieChart.data = pieData

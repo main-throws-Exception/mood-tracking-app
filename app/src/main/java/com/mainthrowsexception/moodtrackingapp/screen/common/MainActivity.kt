@@ -1,15 +1,13 @@
-package com.mainthrowsexception.moodtrackingapp
+package com.mainthrowsexception.moodtrackingapp.screen.common
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatButton
-import androidx.navigation.NavOptions
-import androidx.navigation.PopUpToBuilder
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.navOptions
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.mainthrowsexception.moodtrackingapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

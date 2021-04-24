@@ -1,4 +1,4 @@
-package com.mainthrowsexception.moodtrackingapp
+package com.mainthrowsexception.moodtrackingapp.screen.calendar
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.mainthrowsexception.moodtrackingapp.R
 import org.naishadhparmar.zcustomcalendar.CustomCalendar
-import org.naishadhparmar.zcustomcalendar.OnDateSelectedListener
 import org.naishadhparmar.zcustomcalendar.Property
 import java.util.*
 import kotlin.collections.HashMap
@@ -19,7 +19,7 @@ class CalendarFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_calendar, container, false)
 
@@ -93,7 +93,7 @@ class CalendarFragment : Fragment() {
             dateHashMap[i] = mood
         }
 
-        dateHashMap[cal.get(Calendar.DAY_OF_MONTH)] = "current";
+        dateHashMap[cal.get(Calendar.DAY_OF_MONTH)] = "current"
 
         calendar.setDate(cal, dateHashMap)
 

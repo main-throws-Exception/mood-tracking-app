@@ -22,7 +22,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:layout="@layout/devider"/>
+        app:layout="@layout/divider"/>
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
@@ -51,7 +51,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:layout="@layout/devider"/>
+        app:layout="@layout/divider"/>
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
@@ -81,7 +81,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:layout="@layout/devider"/>
+        app:layout="@layout/divider"/>
 
     <PreferenceCategory
         app:iconSpaceReserved="false"

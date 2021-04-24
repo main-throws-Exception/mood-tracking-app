@@ -1,4 +1,4 @@
-package com.mainthrowsexception.moodtrackingapp
+package com.mainthrowsexception.moodtrackingapp.screen.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,15 +8,15 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import com.mainthrowsexception.moodtrackingapp.R
 
 class SigningUpFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_signing_up, container, false)
         val emailText: EditText = view.findViewById(R.id.fragment_signing_up__email)

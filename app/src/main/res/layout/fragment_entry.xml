@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_background"
-    tools:context=".EntryFragment"
+    tools:context=".screen.entry.EntryFragment"
     >
 
     <include
@@ -76,6 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
+        tools:text="Add new note..."
         android:text="Add new note..."
         android:paddingHorizontal="15dp"
         android:paddingVertical="10dp"
@@ -85,7 +86,8 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/entry__title_linear_layout3"
-        />
+        tools:ignore="HardcodedText,LabelFor"
+        android:autofillHints="tags" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -95,6 +97,6 @@
         android:layout_marginEnd="20dp"
         app:layout_constraintTop_toBottomOf="@id/entry__note_input"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:contentDescription="@string/tick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

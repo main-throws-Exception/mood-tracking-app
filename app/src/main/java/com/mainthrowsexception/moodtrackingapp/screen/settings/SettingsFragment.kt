@@ -1,8 +1,8 @@
-package com.mainthrowsexception.moodtrackingapp
+package com.mainthrowsexception.moodtrackingapp.screen.settings
 
 import android.os.Bundle
-import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.mainthrowsexception.moodtrackingapp.R
 
 class SettingsFragment : PreferenceFragmentCompat() {
 

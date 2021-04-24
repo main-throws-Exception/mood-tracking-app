@@ -8,9 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MoodTrackingApp">
+        android:theme="@style/Theme.MoodTrackingApp"
+        android:fullBackupContent="@xml/backup_descriptor">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".screen.common.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,10 +1,11 @@
-package com.mainthrowsexception.moodtrackingapp
+package com.mainthrowsexception.moodtrackingapp.screen.charts
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.mainthrowsexception.moodtrackingapp.R
 
 class ChartsFragment : Fragment() {
 
