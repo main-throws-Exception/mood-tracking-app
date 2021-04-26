@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.entry.model.Entry
 import com.mainthrowsexception.moodtrackingapp.entry.model.EntryId
+import com.mainthrowsexception.moodtrackingapp.entry.model.UserId
+import com.mainthrowsexception.moodtrackingapp.util.Generator
 import java.util.*
 
 
@@ -31,154 +33,20 @@ class CurrentDayFragment : Fragment() {
     }
 
     private fun generateEntryList(): List<Entry> {
-        return listOf(
-            Entry(
-                EntryId(1),
-                1,
-                listOf("asd", "qwe"),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                2,
-                listOf("zxc", "rtyrtyrty"),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                1,
-                listOf("tag", "another tag"),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                4,
-                listOf("aaa"),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                5,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                1,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                2,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                2,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                1,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                4,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                2,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                1,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                4,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                2,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                1,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                4,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                4,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                1,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                1,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                1,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-            Entry(
-                EntryId(1),
-                1,
-                listOf(),
-                System.currentTimeMillis(),
-                System.currentTimeMillis()
-            ),
-        )
+        val generator = Generator()
+        val entriesList: MutableList<Entry> = ArrayList()
+
+        for (i in 0..generator.nextInt(25)) {
+            entriesList.add(Entry(
+                EntryId(0),
+                UserId(0),
+                generator.string(20),
+                generator.nextInt(5),
+                System.currentTimeMillis() - generator.nextInt(100) * 1000,
+                System.currentTimeMillis() - generator.nextInt(100) * 1000
+            ))
+        }
+
+        return entriesList.sortedBy { it.created }
     }
 }

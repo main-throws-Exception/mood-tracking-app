@@ -67,26 +67,26 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
         @SuppressLint("ResourceAsColor")
         fun bind(entry: Entry) {
             when (entry.mood) {
-                1 -> {
+                0 -> {
                     ivEmoji.setImageResource(R.drawable.ic_very_sad_emoji)
                     layout.background =
                         ContextCompat.getDrawable(itemView.context, R.drawable.mood_very_bad_bg)
                 }
-                2 -> {
+                1 -> {
                     ivEmoji.setImageResource(R.drawable.ic_sad_emoji)
                     layout.background =
                         ContextCompat.getDrawable(itemView.context, R.drawable.mood_bad_bg)
                 }
-                3 -> {
+                2 -> {
                     ivEmoji.setImageResource(R.drawable.ic_neutral_emoji)
                     layout.setBackgroundColor(R.color.grey)
                 }
-                4 -> {
+                3 -> {
                     ivEmoji.setImageResource(R.drawable.ic_happy_emoji)
                     layout.background =
                         ContextCompat.getDrawable(itemView.context, R.drawable.mood_good_bg)
                 }
-                5 -> {
+                4 -> {
                     ivEmoji.setImageResource(R.drawable.ic_very_happy_emoji)
                     layout.background =
                         ContextCompat.getDrawable(itemView.context, R.drawable.mood_very_good_bg)
@@ -95,15 +95,15 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
 
             cgTags.removeAllViews()
 
-            for (tag in entry.tags) {
-                val chip = Chip(itemView.context)
-                chip.text = tag
-                chip.setTextAppearanceResource(R.style.tag_text)
-                chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(itemView.context,
-                    R.color.dark_grey
-                ))
-                cgTags.addView(chip)
-            }
+//            for (tag in entry.tags) {
+//                val chip = Chip(itemView.context)
+//                chip.text = tag
+//                chip.setTextAppearanceResource(R.style.tag_text)
+//                chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(itemView.context,
+//                    R.color.dark_grey
+//                ))
+//                cgTags.addView(chip)
+//            }
 
             tvCreationTime.text = android.text.format.DateFormat.format("hh:mm", Date(entry.created))
         }
