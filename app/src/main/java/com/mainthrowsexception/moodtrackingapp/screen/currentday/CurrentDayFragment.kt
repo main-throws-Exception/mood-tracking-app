@@ -8,9 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mainthrowsexception.moodtrackingapp.R
-import com.mainthrowsexception.moodtrackingapp.entry.model.Entry
-import com.mainthrowsexception.moodtrackingapp.entry.model.EntryId
-import com.mainthrowsexception.moodtrackingapp.entry.model.UserId
+import com.mainthrowsexception.moodtrackingapp.database.model.Entry
 import com.mainthrowsexception.moodtrackingapp.util.Generator
 import java.util.*
 
@@ -38,8 +36,8 @@ class CurrentDayFragment : Fragment() {
 
         for (i in 0..generator.nextInt(25)) {
             entriesList.add(Entry(
-                EntryId(0),
-                UserId(0),
+                0,
+                0,
                 generator.string(20),
                 generator.nextInt(5),
                 System.currentTimeMillis() - generator.nextInt(100) * 1000,

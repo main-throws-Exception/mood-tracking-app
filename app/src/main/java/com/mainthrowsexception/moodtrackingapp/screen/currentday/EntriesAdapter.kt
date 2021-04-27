@@ -1,7 +1,6 @@
 package com.mainthrowsexception.moodtrackingapp.screen.currentday
 
 import android.annotation.SuppressLint
-import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +11,9 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.mainthrowsexception.moodtrackingapp.R
-import com.mainthrowsexception.moodtrackingapp.entry.model.Entry
+import com.mainthrowsexception.moodtrackingapp.database.model.Entry
 import java.util.*
 
 class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Adapter<EntriesAdapter.EntryViewHolder>() {

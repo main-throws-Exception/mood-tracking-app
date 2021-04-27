@@ -1,9 +1,9 @@
-package com.mainthrowsexception.moodtrackingapp.entry.service
+package com.mainthrowsexception.moodtrackingapp.database.service
 
 import com.mainthrowsexception.moodtrackingapp.api.Api
 import com.mainthrowsexception.moodtrackingapp.api.dto.EntryDto
-import com.mainthrowsexception.moodtrackingapp.entry.model.*
-import com.mainthrowsexception.moodtrackingapp.entry.repo.EntryRepo
+import com.mainthrowsexception.moodtrackingapp.database.model.*
+import com.mainthrowsexception.moodtrackingapp.database.repo.EntryRepo
 import com.mainthrowsexception.moodtrackingapp.util.Generator
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.delay
@@ -17,7 +17,7 @@ class FindEntryService (
     private val generator: Generator,
     private val ioDispatcher: CoroutineDispatcher,
 ) {
-    suspend fun find(id: EntryId): ServiceResult {
+    suspend fun find(id: Long): ServiceResult {
         return withContext(ioDispatcher) {
             try {
                 entryRepo.findById(id)?.let { return@withContext ServiceResult.Success(listOf(it)) }
@@ -28,7 +28,7 @@ class FindEntryService (
         }
     }
 
-    suspend fun findByUserIdAndCreatedBetween(userId: UserId, createdLowerBound: Long, createdUpperBound: Long): ServiceResult {
+    suspend fun findByUserIdAndCreatedBetween(userId: Long, createdLowerBound: Long, createdUpperBound: Long): ServiceResult {
         return withContext(ioDispatcher) {
             try {
                 val entriesList = entryRepo.findByUserIdAndCreatedBetween(userId, createdLowerBound, createdUpperBound)
@@ -43,7 +43,7 @@ class FindEntryService (
         }
     }
 
-    private suspend fun fetchFromServerByUserIdAndCreatedBetween(userId: UserId, createdLowerBound: Long, createdUpperBound: Long): ServiceResult {
+    private suspend fun fetchFromServerByUserIdAndCreatedBetween(userId: Long, createdLowerBound: Long, createdUpperBound: Long): ServiceResult {
         delay(generator.timeoutMillis(3)) // emulating http request to server
         val entriesDtoList = api.fetchEntriesByUserIdAndCreatedBetween(userId, createdLowerBound, createdUpperBound) ?: return ServiceResult.NotFound
 //        val tagsDtoList = api.fetchTagsByEntryId(id)
@@ -53,7 +53,7 @@ class FindEntryService (
         return ServiceResult.Success(entriesList)
     }
 
-    private suspend fun fetchFromServer(id: EntryId): ServiceResult {
+    private suspend fun fetchFromServer(id: Long): ServiceResult {
         delay(generator.timeoutMillis(3)) // emulating http request to server
         val entryDto = api.fetchEntryById(id) ?: return ServiceResult.NotFound
 //        val tagsDtoList = api.fetchTagsByEntryId(id)
@@ -78,8 +78,8 @@ class FindEntryService (
 //    )
 
     private fun EntryDto.toModel(): Entry = Entry (
-        EntryId (id),
-        UserId (userId),
+        id,
+        userId,
         note,
         mood,
         created,

@@ -3,15 +3,13 @@ package com.mainthrowsexception.moodtrackingapp.api
 import com.mainthrowsexception.moodtrackingapp.api.dto.EntryDto
 import com.mainthrowsexception.moodtrackingapp.api.dto.TagDto
 import com.mainthrowsexception.moodtrackingapp.api.dto.UserDto
-import com.mainthrowsexception.moodtrackingapp.entry.model.EntryId
-import com.mainthrowsexception.moodtrackingapp.entry.model.UserId
 import com.mainthrowsexception.moodtrackingapp.util.Generator
 
 class ApiImpl(private val generator: Generator) : Api {
 
-    override fun fetchEntryById(id: EntryId): EntryDto {
+    override fun fetchEntryById(id: Long): EntryDto {
         return EntryDto(
-            id.value,
+            id,
             0,
             generator.string(20),
             generator.nextInt(5),
@@ -19,14 +17,14 @@ class ApiImpl(private val generator: Generator) : Api {
         )
     }
 
-    override fun fetchEntriesByUserId(userId: UserId): List<EntryDto>? {
+    override fun fetchEntriesByUserId(userId: Long): List<EntryDto>? {
         val entriesList: MutableList<EntryDto> = ArrayList()
 
         for (i in 0..10) {
             entriesList.add(
                 EntryDto(
                 generator.nextInt(10000).toLong(),
-                userId.value,
+                userId,
                 generator.string(20),
                 generator.nextInt(5),
                 System.currentTimeMillis() - generator.nextInt(100) * 1000
@@ -42,7 +40,7 @@ class ApiImpl(private val generator: Generator) : Api {
     }
 
     override fun fetchEntriesByUserIdAndCreatedBetween(
-        userId: UserId,
+        userId: Long,
         createdLowerBound: Long,
         createdUpperBound: Long
     ): List<EntryDto>? {
@@ -52,7 +50,7 @@ class ApiImpl(private val generator: Generator) : Api {
             entriesList.add(
                 EntryDto(
                     generator.nextInt(10000).toLong(),
-                    userId.value,
+                    userId,
                     generator.string(20),
                     generator.nextInt(5),
                     createdLowerBound + generator.nextInt((createdUpperBound - createdLowerBound).toInt())
@@ -66,7 +64,7 @@ class ApiImpl(private val generator: Generator) : Api {
         }
     }
 
-    override fun fetchTagsByEntryId(entryId: EntryId): List<TagDto> {
+    override fun fetchTagsByEntryId(entryId: Long): List<TagDto> {
         val tagsList: MutableList<TagDto> = ArrayList()
 
         for (i in 0..10) {

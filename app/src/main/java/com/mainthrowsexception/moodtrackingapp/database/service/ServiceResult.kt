@@ -1,6 +1,6 @@
-package com.mainthrowsexception.moodtrackingapp.entry.service
+package com.mainthrowsexception.moodtrackingapp.database.service
 
-import com.mainthrowsexception.moodtrackingapp.entry.model.Entry
+import com.mainthrowsexception.moodtrackingapp.database.model.Entry
 
 sealed class ServiceResult {
     data class Success(val entry: List<Entry>) : ServiceResult()
