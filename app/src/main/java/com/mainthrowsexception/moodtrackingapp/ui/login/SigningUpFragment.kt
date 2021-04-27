@@ -10,8 +10,9 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.findNavController
 import com.mainthrowsexception.moodtrackingapp.R
+import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
 
-class SigningUpFragment : Fragment() {
+class SigningUpFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,5 +32,9 @@ class SigningUpFragment : Fragment() {
             }
         }
         return view
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.fragment_signing_up
     }
 }
