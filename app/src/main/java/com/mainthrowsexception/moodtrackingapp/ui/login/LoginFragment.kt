@@ -31,13 +31,16 @@ class LoginFragment : BaseFragment(), LoginContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter = LoginPresenter(this)
+
         rootView.findViewById<AppCompatButton>(R.id.fragment_login__login_button).setOnClickListener {
             navigationPresenter.addFragment(LoggingInFragment())
         }
         rootView.findViewById<AppCompatButton>(R.id.fragment_login__sign_up_button).setOnClickListener {
             navigationPresenter.addFragment(SigningUpFragment())
         }
+
+
+        presenter = LoginPresenter(this)
     }
 
     override fun getLayout(): Int {
