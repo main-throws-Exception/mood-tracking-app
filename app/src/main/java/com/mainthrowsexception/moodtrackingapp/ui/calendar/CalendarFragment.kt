@@ -1,4 +1,4 @@
-package com.mainthrowsexception.moodtrackingapp.screen.calendar
+package com.mainthrowsexception.moodtrackingapp.ui.calendar
 
 import android.os.Bundle
 import android.view.LayoutInflater

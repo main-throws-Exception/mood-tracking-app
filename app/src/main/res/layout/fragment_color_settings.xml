@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_background"
-    tools:context=".screen.settings.ColorSettingsFragment">
+    tools:context=".ui.settings.ColorSettingsFragment">
 
 
     <!-- TODO: Update blank fragment layout -->

@@ -1,4 +1,4 @@
-package com.mainthrowsexception.moodtrackingapp.screen.currentday
+package com.mainthrowsexception.moodtrackingapp.ui.currentday
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

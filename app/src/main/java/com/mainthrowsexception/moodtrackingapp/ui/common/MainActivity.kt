@@ -1,4 +1,4 @@
-package com.mainthrowsexception.moodtrackingapp.screen.common
+package com.mainthrowsexception.moodtrackingapp.ui.common
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

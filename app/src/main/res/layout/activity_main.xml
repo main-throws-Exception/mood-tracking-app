@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
-    tools:context=".screen.common.MainActivity">
+    tools:context=".ui.common.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/activity_main__nav_host_fragment"

@@ -1,4 +1,4 @@
-package com.mainthrowsexception.moodtrackingapp.screen.charts
+package com.mainthrowsexception.moodtrackingapp.ui.charts
 
 import android.os.Bundle
 import android.view.LayoutInflater

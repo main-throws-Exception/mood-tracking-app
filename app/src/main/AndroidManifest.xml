@@ -11,7 +11,7 @@
         android:theme="@style/Theme.MoodTrackingApp"
         android:fullBackupContent="@xml/backup_descriptor">
 
-        <activity android:name=".screen.common.MainActivity">
+        <activity android:name=".ui.common.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.mainthrowsexception.moodtrackingapp.screen.login
+package com.mainthrowsexception.moodtrackingapp.ui.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
-import androidx.compose.ui.unit.dp
 import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView

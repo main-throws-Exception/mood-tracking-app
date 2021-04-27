@@ -1,4 +1,4 @@
-package com.mainthrowsexception.moodtrackingapp.screen.charts
+package com.mainthrowsexception.moodtrackingapp.ui.charts
 
 import android.graphics.Color
 import android.os.Bundle

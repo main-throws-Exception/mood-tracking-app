@@ -1,4 +1,4 @@
-package com.mainthrowsexception.moodtrackingapp.screen.settings
+package com.mainthrowsexception.moodtrackingapp.ui.settings
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
