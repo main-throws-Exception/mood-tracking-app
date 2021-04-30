@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "229332993119",
+    "project_id": "goodmood-c69a1",
+    "storage_bucket": "goodmood-c69a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229332993119:android:cb3d79f858a184b44b07ea",
+        "android_client_info": {
+          "package_name": "com.mainthrowsexception.moodtrackingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229332993119-b9hnklkjtk7eum1a35vg4rqj1a5sikdm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mainthrowsexception.moodtrackingapp",
+            "certificate_hash": "5b828d3903b655a6f70f35e9db7f425744c3507b"
+          }
+        },
+        {
+          "client_id": "229332993119-8q11gqea3ja2cbptctpvhh2cmjhpnpm8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7GH-0pdNdfk_m9Kqg05oYZe5ji6EKpN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229332993119-8q11gqea3ja2cbptctpvhh2cmjhpnpm8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
