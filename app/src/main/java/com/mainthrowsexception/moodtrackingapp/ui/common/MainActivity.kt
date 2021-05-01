@@ -1,6 +1,7 @@
 package com.mainthrowsexception.moodtrackingapp.ui.common
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatButton
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
 
     override fun setFragment(fragment: BaseFragment) {
         fragment.attachPresenter(presenter)
+        fragment.onAttach(applicationContext)
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .commit()

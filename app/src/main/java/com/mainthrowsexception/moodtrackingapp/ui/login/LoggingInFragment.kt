@@ -2,21 +2,16 @@ package com.mainthrowsexception.moodtrackingapp.ui.login
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.FragmentContainerView
-import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.LoggingInContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.LoggingInPresenter
-import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.LoginPresenter
 
 class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickListener {
 
@@ -80,13 +75,15 @@ class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickLi
     }
 
     override fun onLoginResult(result: Boolean, reason: String?) {
-        Log.i("LoggingIn", "OnLoginResult result - $result")
+        Log.i("LoggingIn", "OnLoginResult result - $result reason - $reason")
+        val mContext = activity?.applicationContext
+        Log.i("LoggingIn", "activity: $activity, Context: $mContext")
         loginButton.isEnabled = true
         if (result) {
 //            navHostFragmentContainerView.setPadding(0, 0, 0, (resources.displayMetrics.density * 60 + 0.5f).toInt())
 //            bottomNavigationView.visibility = View.VISIBLE
 //            bottomNavigationViewButton.visibility = View.VISIBLE
-            Toast.makeText(activity, "success", Toast.LENGTH_SHORT).show() // TEMPORARY MEASURE
+            Toast.makeText(activity?.applicationContext, "Success", Toast.LENGTH_SHORT).show() // TEMPORARY MEASURE
         } else {
             loginFailedToast?.cancel()
 
@@ -94,8 +91,11 @@ class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickLi
             when (reason) {
                 "Invalid" -> toastMsg = "Invalid email or password"
                 "Wrong" -> toastMsg = "Wrong email or password"
+                "Failed" -> toastMsg = "Login failed"
             }
-            loginFailedToast = Toast.makeText(activity, toastMsg, Toast.LENGTH_SHORT)
+            loginFailedToast = Toast.makeText(activity?.applicationContext, toastMsg, Toast.LENGTH_SHORT)
+
+            Log.i("LoggingIn", "toast: $loginFailedToast.")
 
             loginFailedToast?.show()
         }

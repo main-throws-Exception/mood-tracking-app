@@ -2,16 +2,10 @@ package com.mainthrowsexception.moodtrackingapp.ui.login
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
-import androidx.fragment.app.FragmentContainerView
-import androidx.navigation.findNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.SigningUpContract
@@ -61,10 +55,10 @@ class SigningUpFragment : BaseFragment(), SigningUpContract.View, View.OnClickLi
     }
 
     override fun onSignUpResult(result: Boolean, reason: String?) {
-        Log.i("LoggingIn", "OnLoginResult result - $result")
+        Log.i("SigningUp", "OnSignUpResult result - $result reason - $reason")
         signUpButton.isEnabled = true
         if (result) {
-            Toast.makeText(context?.applicationContext, "success", Toast.LENGTH_SHORT).show() // TEMPORARY MEASURE
+            Toast.makeText(context?.applicationContext, "Success", Toast.LENGTH_SHORT).show() // TEMPORARY MEASURE
             navigationPresenter.addFragment(LoginFragment())
         } else {
             signUpFailedToast?.cancel()
@@ -72,6 +66,8 @@ class SigningUpFragment : BaseFragment(), SigningUpContract.View, View.OnClickLi
             var toastMsg = "Error"
             when (reason) {
                 "Invalid" -> toastMsg = "Invalid email or password"
+                "Failed" -> toastMsg = "Registration failed"
+                "Cancelled" -> toastMsg = "Registration cancelled"
             }
             signUpFailedToast = Toast.makeText(context?.applicationContext, toastMsg, Toast.LENGTH_SHORT)
 

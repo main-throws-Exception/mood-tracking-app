@@ -8,13 +8,11 @@ class UserUtil {
         private const val passwordMinLength: Int = 8
 
         fun validateCredentials(email: String, password: String): Boolean {
-            val emailTrim = email.trim()
-            val passwordTrim = password.trim()
 
-            return !TextUtils.isEmpty(passwordTrim) &&
-                    passwordTrim.length >= passwordMinLength &&
-                    !TextUtils.isEmpty(emailTrim) &&
-                    android.util.Patterns.EMAIL_ADDRESS.matcher(emailTrim).matches()
+            return !TextUtils.isEmpty(password) &&
+                    password.length >= passwordMinLength &&
+                    !TextUtils.isEmpty(email) &&
+                    android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
         }
     }
 }
