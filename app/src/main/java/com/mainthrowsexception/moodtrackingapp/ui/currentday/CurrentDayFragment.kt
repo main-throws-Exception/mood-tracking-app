@@ -36,8 +36,8 @@ class CurrentDayFragment : Fragment() {
 
         for (i in 0..generator.nextInt(25)) {
             entriesList.add(Entry(
-                0,
-                0,
+                "0",
+                "0",
                 generator.string(20),
                 generator.nextInt(5),
                 System.currentTimeMillis() - generator.nextInt(100) * 1000,

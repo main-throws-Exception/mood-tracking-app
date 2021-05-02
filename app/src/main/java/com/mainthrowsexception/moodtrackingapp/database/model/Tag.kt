@@ -1,11 +1,10 @@
 package com.mainthrowsexception.moodtrackingapp.database.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import com.google.firebase.database.PropertyName
 
-@Entity
 data class Tag (
-    @PrimaryKey(autoGenerate = true)
-    val id: Long,
-    val name: String
+    val uid: String = "",
+    @PropertyName("user_id")
+    val userId: String = "",
+    val name: String = ""
 )
