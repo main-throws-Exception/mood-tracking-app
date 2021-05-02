@@ -40,7 +40,6 @@ class CurrentDayFragment : Fragment() {
                 "0",
                 generator.string(20),
                 generator.nextInt(5),
-                System.currentTimeMillis() - generator.nextInt(100) * 1000,
                 System.currentTimeMillis() - generator.nextInt(100) * 1000
             ))
         }
