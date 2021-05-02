@@ -85,14 +85,8 @@ class LoginFragment : BaseFragment(), LoginContract.View, View.OnClickListener {
         private const val RC_SIGN_IN = 9001
     }
 
-    override fun onGoogleSignInResult(result: Boolean) {
-        if (result) {
-            Log.d("GoogleActivity", "signInWithCredential:success")
-            Toast.makeText(activity?.applicationContext, "Success", Toast.LENGTH_SHORT).show()
-            navigationPresenter.addFragment(CalendarFragment())
-        } else {
-            Toast.makeText(activity?.applicationContext, "Failure", Toast.LENGTH_SHORT).show()
-            Log.w("GoogleActivity", "signInWithCredential:failure")
-        }
+    override fun onGoogleSignInSuccess() {
+        Toast.makeText(activity?.applicationContext, "Success", Toast.LENGTH_SHORT).show()
+        navigationPresenter.addFragment(CalendarFragment())
     }
 }
