@@ -1,7 +1,15 @@
 package com.mainthrowsexception.moodtrackingapp.ui.common.contract
 
-interface LoginContract {
-    interface Presenter
+import android.content.Intent
+import androidx.fragment.app.FragmentActivity
 
-    interface View
+interface LoginContract {
+    interface Presenter {
+        fun getGoogleSignInIntent(activity: FragmentActivity, webClientId: String): Intent
+        fun firebaseAuthWithGoogle(activity: FragmentActivity, idToken: String)
+    }
+
+    interface View {
+        fun onGoogleSignInResult(result: Boolean)
+    }
 }
