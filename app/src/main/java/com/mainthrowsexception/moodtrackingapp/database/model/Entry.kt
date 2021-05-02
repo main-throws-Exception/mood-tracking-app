@@ -8,6 +8,5 @@ data class Entry (
     val userId: String = "0",
     val note: String = "",
     val mood: Int = -1,
-    val created: Long = System.currentTimeMillis(),
-    val updated: Long = System.currentTimeMillis()
+    val created: Long = System.currentTimeMillis()
 )
