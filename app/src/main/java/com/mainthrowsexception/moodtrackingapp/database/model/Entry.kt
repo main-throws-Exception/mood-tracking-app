@@ -4,7 +4,6 @@ import com.google.firebase.database.PropertyName
 
 data class Entry (
     val uid: String = "",
-    @PropertyName("user_id")
     val userId: String = "0",
     val note: String = "",
     val mood: Int = -1,
