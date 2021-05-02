@@ -23,9 +23,9 @@ class CalendarFragment : BaseFragment(), CalendarContract.View, OnDateSelectedLi
         calendar = view.findViewById(R.id.fragment_calendar__calendar)
         calendar.setOnDateSelectedListener(this)
 
-        presenter.initCalendar(calendar)
-
         presenter = CalendarPresenter(this)
+
+        presenter.initCalendar(calendar)
     }
 
     override fun getLayout(): Int {
