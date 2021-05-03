@@ -7,7 +7,7 @@
     tools:context=".ui.currentday.CurrentDayFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragment_current_day__rv_entires"
+        android:id="@+id/fragment_current_day__rv_entries"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"

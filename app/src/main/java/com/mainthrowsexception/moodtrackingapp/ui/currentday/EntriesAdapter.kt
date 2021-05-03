@@ -18,6 +18,7 @@ import java.util.*
 
 class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Adapter<EntriesAdapter.EntryViewHolder>() {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EntryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.entry, parent, false)
         return EntryViewHolder(view)
