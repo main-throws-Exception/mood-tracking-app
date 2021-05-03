@@ -8,10 +8,14 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.FragmentContainerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.mainthrowsexception.moodtrackingapp.R
+import com.mainthrowsexception.moodtrackingapp.ui.calendar.CalendarFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.LoggingInContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.LoggingInPresenter
+import com.mainthrowsexception.moodtrackingapp.ui.currentday.CurrentDayFragment
+import com.mainthrowsexception.moodtrackingapp.ui.settings.SettingsFragment
 
 class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickListener {
 
@@ -83,7 +87,13 @@ class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickLi
 //            navHostFragmentContainerView.setPadding(0, 0, 0, (resources.displayMetrics.density * 60 + 0.5f).toInt())
 //            bottomNavigationView.visibility = View.VISIBLE
 //            bottomNavigationViewButton.visibility = View.VISIBLE
+
             Toast.makeText(activity?.applicationContext, "Success", Toast.LENGTH_SHORT).show() // TEMPORARY MEASURE
+
+            navigationPresenter.addFragment(CurrentDayFragment())
+
+            //val text = FirebaseAuth.getInstance().currentUser!!.uid
+            //Toast.makeText(activity?.applicationContext, text, Toast.LENGTH_SHORT).show()
         } else {
             loginFailedToast?.cancel()
 
