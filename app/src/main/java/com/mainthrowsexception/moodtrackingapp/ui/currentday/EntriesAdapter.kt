@@ -23,13 +23,6 @@ import java.util.*
 
 class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Adapter<EntriesAdapter.EntryViewHolder>() {
 
-//    наверное, это должно быть не тут...)))
-    private val userId = FirebaseAuth.getInstance().currentUser!!.uid
-    private val databaseRef = Firebase.database("https://goodmood-c69a1-default-rtdb.europe-west1.firebasedatabase.app/").reference
-    val query = databaseRef.child("entries")
-        .child(userId)
-        .orderByChild("created")
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EntryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.entry, parent, false)
         return EntryViewHolder(view)
@@ -56,6 +49,9 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
         }
 
         private fun showPopup(view: View) {
+
+            val userId = FirebaseAuth.getInstance().currentUser!!.uid
+            val databaseRef = Firebase.database("https://goodmood-c69a1-default-rtdb.europe-west1.firebasedatabase.app/").reference
             val selectedEntry = entries[adapterPosition]
 
             val popupMenu = PopupMenu(view.context, view)
@@ -69,6 +65,7 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
                     R.id.popup__delete -> {
                         Log.i("RECYCLER VIEW", "Delete clicked on " + selectedEntry.uid)
                         databaseRef.child("entries").child(userId).child(selectedEntry.uid).removeValue()
+                        Toast.makeText(view.context, R.string.deletion_toast, Toast.LENGTH_SHORT).show()
                         true
                     }
                     else -> true
