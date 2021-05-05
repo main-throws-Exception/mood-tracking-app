@@ -31,8 +31,8 @@ class CurrentDayPresenter(private val view: CurrentDayContract.View,
         val query = databaseRef.child("entries")
             .child(userId)
             .orderByChild("created")
-//            .startAt(midnight.toDouble())
-//            .endAt(now.toDouble())
+            .startAt(midnight.toDouble())
+            .endAt(now.toDouble())
 
         val entries = ArrayList<Entry>()
 
@@ -51,7 +51,6 @@ class CurrentDayPresenter(private val view: CurrentDayContract.View,
 
                 for (item in snapshot.children) {
                     val entry = item.getValue(Entry::class.java)
-                    Log.i("ENTRY: ", entry?.tags.toString())
                     entries.add(entry!!)
                 }
                 recyclerView.adapter = EntriesAdapter(entries)
