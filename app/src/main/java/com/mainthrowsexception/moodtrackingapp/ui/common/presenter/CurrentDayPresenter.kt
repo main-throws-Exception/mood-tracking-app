@@ -11,8 +11,6 @@ import com.google.firebase.ktx.Firebase
 import com.mainthrowsexception.moodtrackingapp.database.model.Entry
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.CurrentDayContract
 import com.mainthrowsexception.moodtrackingapp.ui.currentday.EntriesAdapter
-import java.time.Instant
-import java.time.LocalDateTime
 import java.time.ZonedDateTime
 
 class CurrentDayPresenter(private val view: CurrentDayContract.View,
@@ -23,14 +21,11 @@ class CurrentDayPresenter(private val view: CurrentDayContract.View,
 
         val nowZoned: ZonedDateTime = ZonedDateTime.now()
         val midnight: Long = nowZoned.toLocalDate().atStartOfDay(nowZoned.zone).toInstant().toEpochMilli()
-//        Log.i("MIDNIGHT", midnight.toString())
-
         val now = System.currentTimeMillis()
-//        Log.i("NOW", now.toString())
 
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
         val databaseRef = Firebase.database("https://goodmood-c69a1-default-rtdb.europe-west1.firebasedatabase.app/").reference
-            .child("entries")
+        val query = databaseRef.child("entries")
             .child(userId)
             .orderByChild("created")
             .startAt(midnight.toDouble())
@@ -38,7 +33,7 @@ class CurrentDayPresenter(private val view: CurrentDayContract.View,
 
         val entries = ArrayList<Entry>()
 
-        databaseRef.addValueEventListener(object: ValueEventListener {
+        query.addValueEventListener(object: ValueEventListener {
 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
@@ -48,6 +43,8 @@ class CurrentDayPresenter(private val view: CurrentDayContract.View,
 
                 Log.i("CurrentDayPresenter", "onDataChange called")
 
+                entries.clear()
+
                 for (item in snapshot.children) {
                     val entry = item.getValue(Entry::class.java)
                     entries.add(entry!!)
@@ -56,12 +53,4 @@ class CurrentDayPresenter(private val view: CurrentDayContract.View,
             }
         })
     }
-
-//        val dateTimeNowMidnight = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0)
-//        val dateTimeNow = LocalDateTime.now()
-
-//        return databaseRef.child("entries").child(userId)
-//            .orderByChild("created")
-//            .startAt(dateTimeNowMidnight.withDayOfMonth(1).atZone(ZoneOffset.UTC)?.toInstant()?.toEpochMilli()?.toDouble()!!)
-//            .endAt(dateTimeNow.withDayOfMonth(1).atZone(ZoneOffset.UTC)?.toInstant()?.toEpochMilli()?.toDouble()!!)
 }
