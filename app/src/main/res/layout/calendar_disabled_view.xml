@@ -9,15 +9,15 @@
 
     <androidx.cardview.widget.CardView
         style="@style/calendar_card"
-        app:cardBackgroundColor="@color/neutral_mood"
+        app:cardBackgroundColor="@color/light_grey"
         app:cardCornerRadius="4dp">
 
         <TextView
-            android:id="@+id/calendar_neutral_view__text"
+            android:id="@+id/calendar_disabled_view__text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             tools:text="test" />
 
     </androidx.cardview.widget.CardView>
