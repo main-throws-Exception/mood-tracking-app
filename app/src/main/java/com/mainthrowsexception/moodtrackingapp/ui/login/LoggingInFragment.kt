@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.FragmentContainerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mainthrowsexception.moodtrackingapp.R
+import com.mainthrowsexception.moodtrackingapp.ui.calendar.CalendarFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.LoggingInContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.LoggingInPresenter
@@ -66,6 +67,8 @@ class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickLi
         loginButton.setOnClickListener(this)
 
         presenter = LoggingInPresenter(this)
+
+        navigationPresenter.stopLoading()
     }
 
     override fun onClick(view: View) {
@@ -84,6 +87,7 @@ class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickLi
 //            bottomNavigationView.visibility = View.VISIBLE
 //            bottomNavigationViewButton.visibility = View.VISIBLE
             Toast.makeText(activity?.applicationContext, "Success", Toast.LENGTH_SHORT).show() // TEMPORARY MEASURE
+            navigationPresenter.addFragment(CalendarFragment())
         } else {
             loginFailedToast?.cancel()
 

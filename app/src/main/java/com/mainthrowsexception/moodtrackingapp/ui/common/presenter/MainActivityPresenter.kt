@@ -13,6 +13,14 @@ class MainActivityPresenter(view: MainActivityContract.View) : MainActivityContr
         view?.setFragment(fragment)
     }
 
+    override fun startLoading() {
+        view?.startLoading()
+    }
+
+    override fun stopLoading() {
+        view?.stopLoading()
+    }
+
     override fun setHomeFragment() {
         view?.setFragment(LoginFragment())
     }
