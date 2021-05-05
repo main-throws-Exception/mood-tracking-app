@@ -91,6 +91,8 @@ class CalendarPresenter(view: CalendarContract.View) : CalendarContract.Presente
 
         val valueEventListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                entriesList.clear()
+
                 for (entrySnapshot in snapshot.children) {
                     val entry = entrySnapshot.getValue(Entry::class.java)
                     val dayOfMonth = LocalDateTime.ofInstant(Instant.ofEpochMilli(entry!!.created), ZoneOffset.UTC).dayOfMonth
