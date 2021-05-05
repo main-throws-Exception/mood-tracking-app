@@ -9,5 +9,7 @@ interface MainActivityContract {
 
     interface View {
         fun setFragment(fragment: BaseFragment)
+        fun startLoading()
+        fun stopLoading()
     }
 }
