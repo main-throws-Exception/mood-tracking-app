@@ -92,7 +92,7 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
                 2 -> {
                     ivEmoji.setImageResource(R.drawable.ic_neutral_emoji)
                     layout.background =
-                        ContextCompat.getDrawable(itemView.context, R.color.grey)
+                        ContextCompat.getDrawable(itemView.context, R.color.neutral_mood)
                 }
                 3 -> {
                     ivEmoji.setImageResource(R.drawable.ic_happy_emoji)

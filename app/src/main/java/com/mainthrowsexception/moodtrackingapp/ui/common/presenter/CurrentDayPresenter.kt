@@ -31,8 +31,8 @@ class CurrentDayPresenter(private val view: CurrentDayContract.View,
         val query = databaseRef.child("entries")
             .child(userId)
             .orderByChild("created")
-            .startAt(midnight.toDouble())
-            .endAt(now.toDouble())
+//            .startAt(midnight.toDouble())
+//            .endAt(now.toDouble())
 
         val entries = ArrayList<Entry>()
 
