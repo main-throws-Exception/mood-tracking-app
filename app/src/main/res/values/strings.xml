@@ -133,4 +133,5 @@
     <string name="tick">tick</string>
 
     <string name="deletion_toast">Successfully deleted</string>
+    <string name="get_entries_fail">Failed to get entries></string>
 </resources>

@@ -1,6 +1,7 @@
 package com.mainthrowsexception.moodtrackingapp.ui.currentday
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ktx.database
@@ -22,6 +24,9 @@ import com.mainthrowsexception.moodtrackingapp.database.model.Entry
 import java.util.*
 
 class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Adapter<EntriesAdapter.EntryViewHolder>() {
+
+    private val userId = FirebaseAuth.getInstance().currentUser!!.uid
+    private val databaseRef = Firebase.database("https://goodmood-c69a1-default-rtdb.europe-west1.firebasedatabase.app/").reference
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EntryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.entry, parent, false)
@@ -49,9 +54,6 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
         }
 
         private fun showPopup(view: View) {
-
-            val userId = FirebaseAuth.getInstance().currentUser!!.uid
-            val databaseRef = Firebase.database("https://goodmood-c69a1-default-rtdb.europe-west1.firebasedatabase.app/").reference
             val selectedEntry = entries[adapterPosition]
 
             val popupMenu = PopupMenu(view.context, view)
@@ -106,15 +108,14 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
 
             cgTags.removeAllViews()
 
-//            for (tag in entry.tags) {
-//                val chip = Chip(itemView.context)
-//                chip.text = tag
-//                chip.setTextAppearanceResource(R.style.tag_text)
-//                chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(itemView.context,
-//                    R.color.dark_grey
-//                ))
-//                cgTags.addView(chip)
-//            }
+            for (tag in entry.tags) {
+                val chip = Chip(itemView.context)
+                chip.text = tag
+                chip.setTextAppearanceResource(R.style.tag_text)
+                chip.chipBackgroundColor =
+                    ColorStateList.valueOf(ContextCompat.getColor(itemView.context, R.color.dark_grey))
+                cgTags.addView(chip)
+            }
 
             tvCreationTime.text = android.text.format.DateFormat.format("hh:mm", Date(entry.created))
         }
