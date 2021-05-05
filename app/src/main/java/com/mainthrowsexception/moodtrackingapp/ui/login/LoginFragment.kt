@@ -47,14 +47,21 @@ class LoginFragment : BaseFragment(), LoginContract.View, View.OnClickListener {
 
 
         presenter = LoginPresenter(this)
+
+//        navigationPresenter.stopLoading()
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.fragment_login__login_button -> navigationPresenter.addFragment(LoggingInFragment())
             R.id.fragment_login__sign_up_button -> navigationPresenter.addFragment(SigningUpFragment())
-            R.id.fragment_login__google_sign_in_button -> startActivityForResult(presenter.getGoogleSignInIntent(requireActivity(), getString(R.string.default_web_client_id)), RC_SIGN_IN)
+            R.id.fragment_login__google_sign_in_button -> onGoogleSignInStart()
         }
+    }
+
+    override fun onGoogleSignInStart() {
+        navigationPresenter.startLoading()
+        startActivityForResult(presenter.getGoogleSignInIntent(requireActivity(), getString(R.string.default_web_client_id)), RC_SIGN_IN)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -69,24 +76,24 @@ class LoginFragment : BaseFragment(), LoginContract.View, View.OnClickListener {
                 Log.d("GoogleActivity", "firebaseAuthWithGoogle:" + account.id)
                 presenter.firebaseAuthWithGoogle(requireActivity(), account.idToken!!)
             } catch (e: ApiException) {
+                navigationPresenter.stopLoading()
                 // Google Sign In failed, update UI appropriately
                 Log.w("GoogleActivity", "Google sign in failed", e)
             }
         }
     }
 
-
-
     override fun getLayout(): Int {
         return R.layout.fragment_login
     }
 
-    companion object {
-        private const val RC_SIGN_IN = 9001
-    }
-
     override fun onGoogleSignInSuccess() {
+        navigationPresenter.stopLoading()
         Toast.makeText(activity?.applicationContext, "Success", Toast.LENGTH_SHORT).show()
         navigationPresenter.addFragment(CalendarFragment())
+    }
+
+    companion object {
+        private const val RC_SIGN_IN = 9001
     }
 }

@@ -12,6 +12,7 @@ interface LoginContract {
     }
 
     interface View {
+        fun onGoogleSignInStart()
         fun onGoogleSignInSuccess()
     }
 }
