@@ -6,10 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.currentday.CurrentDayFragment">
 
+    <Toolbar
+        android:id="@+id/fragment_current_day__toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/blue"
+        android:logo="@drawable/ic_today_toolbar"
+        android:titleTextAppearance="@style/toolbar"
+        android:title="@string/today" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_current_day__rv_entries"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="65dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

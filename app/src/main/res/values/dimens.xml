@@ -7,4 +7,5 @@
     <dimen name="tag_text_size">12sp</dimen>
     <dimen name="tag_button_height">30dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="toolbar_text_size">24sp</dimen>
 </resources>
