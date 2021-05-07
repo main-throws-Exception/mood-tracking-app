@@ -4,46 +4,42 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mainthrowsexception.moodtrackingapp.R
-import com.mainthrowsexception.moodtrackingapp.database.model.Entry
-import com.mainthrowsexception.moodtrackingapp.util.Generator
+import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
+import com.mainthrowsexception.moodtrackingapp.ui.common.contract.CurrentDayContract
+import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.CurrentDayPresenter
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
 import java.util.*
 
 
-class CurrentDayFragment : Fragment() {
+class CurrentDayFragment : BaseFragment(), CurrentDayContract.View {
 
+    private lateinit var presenter: CurrentDayPresenter
     private var rvEntries: RecyclerView? = null
-    private val entries = generateEntryList()
+    private var toolbar: Toolbar? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val view: View = inflater.inflate(R.layout.fragment_current_day, container, false)
-        rvEntries = view.findViewById(R.id.fragment_current_day__rv_entires)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        toolbar = view.findViewById(R.id.fragment_current_day__toolbar)
+        val today = Calendar.getInstance().time
+        val sdf = SimpleDateFormat("dd/mm/yyyy")
+        val date  = sdf.format(today)
+        toolbar!!.title = date
+
+        rvEntries = view.findViewById(R.id.fragment_current_day__rv_entries)
         rvEntries!!.layoutManager = LinearLayoutManager(view.context)
-        rvEntries!!.adapter = EntriesAdapter(entries as MutableList<Entry>)
 
-        return view
+        presenter = CurrentDayPresenter(this, rvEntries!!)
+        presenter.getEntries()
     }
 
-    private fun generateEntryList(): List<Entry> {
-        val generator = Generator()
-        val entriesList: MutableList<Entry> = ArrayList()
-
-        for (i in 0..generator.nextInt(25)) {
-            entriesList.add(Entry(
-                "0",
-                "0",
-                generator.string(20),
-                generator.nextInt(5),
-                System.currentTimeMillis() - generator.nextInt(100) * 1000
-            ))
-        }
-
-        return entriesList.sortedBy { it.created }
+    override fun getLayout(): Int {
+        return R.layout.fragment_current_day
     }
 }
