@@ -9,5 +9,7 @@ interface FragmentNavigation {
 
     interface Presenter {
         fun addFragment(fragment: BaseFragment)
+        fun startLoading()
+        fun stopLoading()
     }
 }

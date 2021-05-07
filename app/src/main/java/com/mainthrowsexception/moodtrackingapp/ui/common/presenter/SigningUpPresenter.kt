@@ -24,7 +24,7 @@ class SigningUpPresenter(view: SigningUpContract.View) : SigningUpContract.Prese
         var reason: String? = null
         if (!UserUtil.validateCredentials(emailTrim, passwordTrim)) {
             reason = "Invalid"
-            showResult(isSignUpSuccessful, reason)
+            view?.onSignUpResult(isSignUpSuccessful, reason)
         } else {
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
@@ -34,12 +34,12 @@ class SigningUpPresenter(view: SigningUpContract.View) : SigningUpContract.Prese
                     reason = "Failed"
                 }
 
-                showResult(isSignUpSuccessful, reason)
+                view?.onSignUpResult(isSignUpSuccessful, reason)
             }.addOnCanceledListener {
                 isSignUpSuccessful = false
                 reason = "Cancelled"
 
-                showResult(isSignUpSuccessful, reason)
+                view?.onSignUpResult(isSignUpSuccessful, reason)
             }
         }
     }
@@ -59,9 +59,5 @@ class SigningUpPresenter(view: SigningUpContract.View) : SigningUpContract.Prese
         val newUser = User(user.uid, username, email)
 
         databaseRef.child("users").child(newUser.uid).setValue(newUser)
-    }
-
-    override fun showResult(result: Boolean, reason: String?) {
-        view?.onSignUpResult(result, reason)
     }
 }

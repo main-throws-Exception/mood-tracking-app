@@ -1,6 +1,7 @@
 package com.mainthrowsexception.moodtrackingapp.ui.common
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -12,18 +13,31 @@ import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.MainActivityContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.MainActivityPresenter
+import com.mainthrowsexception.moodtrackingapp.ui.login.LoginFragment
 
 class MainActivity : AppCompatActivity(), MainActivityContract.View {
 
     private lateinit var presenter: MainActivityPresenter
+    private lateinit var loading: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setContentView(R.layout.activity_main)
 
+        loading = findViewById(R.id.loading_panel)
+
         presenter = MainActivityPresenter(this)
-        presenter.setHomeFragment()
+
+        val homeFragment = LoginFragment()
+
+        homeFragment.attachPresenter(presenter)
+        homeFragment.onAttach(applicationContext)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, homeFragment)
+            .commit()
+
+//        presenter.setHomeFragment()
 
 //        val navHostFragment =
 //            supportFragmentManager.findFragmentById(R.id.activity_main__nav_host_fragment) as NavHostFragment
@@ -51,5 +65,14 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .commit()
+        startLoading()
+    }
+
+    override fun startLoading() {
+        loading.visibility = View.VISIBLE
+    }
+
+    override fun stopLoading() {
+        loading.visibility = View.GONE
     }
 }

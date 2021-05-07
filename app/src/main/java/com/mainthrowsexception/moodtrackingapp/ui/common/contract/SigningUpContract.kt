@@ -6,7 +6,6 @@ interface SigningUpContract {
     interface Presenter {
         fun doSignUp(email: String, password: String)
         fun writeUser(user: FirebaseUser?)
-        fun showResult(result: Boolean, reason: String? = null)
     }
 
     interface View {

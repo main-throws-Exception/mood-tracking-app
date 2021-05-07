@@ -48,6 +48,8 @@ class SigningUpFragment : BaseFragment(), SigningUpContract.View, View.OnClickLi
         signUpButton.setOnClickListener(this)
 
         presenter = SigningUpPresenter(this)
+
+        navigationPresenter.stopLoading()
     }
 
     override fun getLayout(): Int {

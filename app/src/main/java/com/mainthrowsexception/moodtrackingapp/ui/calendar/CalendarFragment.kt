@@ -1,6 +1,7 @@
 package com.mainthrowsexception.moodtrackingapp.ui.calendar
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.mainthrowsexception.moodtrackingapp.R
@@ -9,9 +10,12 @@ import com.mainthrowsexception.moodtrackingapp.ui.common.contract.CalendarContra
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.CalendarPresenter
 import org.naishadhparmar.zcustomcalendar.CustomCalendar
 import org.naishadhparmar.zcustomcalendar.OnDateSelectedListener
+import org.naishadhparmar.zcustomcalendar.OnNavigationButtonClickedListener
 import java.util.*
+import kotlin.collections.HashMap
 
-class CalendarFragment : BaseFragment(), CalendarContract.View, OnDateSelectedListener {
+class CalendarFragment : BaseFragment(), CalendarContract.View, OnDateSelectedListener,
+    OnNavigationButtonClickedListener {
 
     private lateinit var presenter: CalendarPresenter
     private lateinit var calendar: CustomCalendar
@@ -22,6 +26,8 @@ class CalendarFragment : BaseFragment(), CalendarContract.View, OnDateSelectedLi
 
         calendar = view.findViewById(R.id.fragment_calendar__calendar)
         calendar.setOnDateSelectedListener(this)
+        calendar.setOnNavigationButtonClickedListener(CustomCalendar.PREVIOUS, this)
+        calendar.setOnNavigationButtonClickedListener(CustomCalendar.NEXT, this)
 
         presenter = CalendarPresenter(this)
 
@@ -40,5 +46,19 @@ class CalendarFragment : BaseFragment(), CalendarContract.View, OnDateSelectedLi
         curToast?.cancel()
         curToast = Toast.makeText(activity?.applicationContext, sDate, Toast.LENGTH_SHORT)
         curToast?.show()
+    }
+
+    override fun onNavigationButtonClicked(
+        whichButton: Int,
+        newMonth: Calendar?
+    ): Array<MutableMap<Int, Any>> {
+        Log.i("onDataChange", "New month: ${newMonth?.timeInMillis}, ${newMonth?.time}")
+        navigationPresenter.startLoading()
+        presenter.onMonthChanged(newMonth)
+        return arrayOf(hashMapOf(), hashMapOf())
+    }
+
+    override fun onCalendarReady() {
+        navigationPresenter.stopLoading()
     }
 }

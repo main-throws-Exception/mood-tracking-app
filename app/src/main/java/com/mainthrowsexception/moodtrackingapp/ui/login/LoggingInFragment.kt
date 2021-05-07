@@ -70,6 +70,8 @@ class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickLi
         loginButton.setOnClickListener(this)
 
         presenter = LoggingInPresenter(this)
+
+        navigationPresenter.stopLoading()
     }
 
     override fun onClick(view: View) {
@@ -89,7 +91,7 @@ class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickLi
 //            bottomNavigationViewButton.visibility = View.VISIBLE
 
             Toast.makeText(activity?.applicationContext, "Success", Toast.LENGTH_SHORT).show() // TEMPORARY MEASURE
-
+          
             navigationPresenter.addFragment(CurrentDayFragment())
 
             //val text = FirebaseAuth.getInstance().currentUser!!.uid
