@@ -1,19 +1,15 @@
 package com.mainthrowsexception.moodtrackingapp.ui.common.contract
 
+import com.mainthrowsexception.moodtrackingapp.database.model.Entry
+
 interface CurrentDayContract {
     interface Presenter {
         fun getEntries()
+//        fun onDateChanged()
     }
 
     interface View {
-//        fun onEntryRead(entries: ArrayList<Entry>)
+        fun onCurrentDayReady()
+        fun onEntriesRead(entries: ArrayList<Entry>)
     }
-
-//    interface onOperationListener {
-//        fun onSuccess()
-//        fun onFailure()
-//        fun onStart()
-//        fun onEnd()
-//        fun onRead() //param?
-//    }
 }

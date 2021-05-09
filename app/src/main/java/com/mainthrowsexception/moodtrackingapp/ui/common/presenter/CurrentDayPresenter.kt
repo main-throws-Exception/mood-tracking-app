@@ -2,7 +2,6 @@ package com.mainthrowsexception.moodtrackingapp.ui.common.presenter
 
 import android.util.Log
 import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -12,11 +11,9 @@ import com.google.firebase.ktx.Firebase
 import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.database.model.Entry
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.CurrentDayContract
-import com.mainthrowsexception.moodtrackingapp.ui.currentday.EntriesAdapter
 import java.time.ZonedDateTime
 
-class CurrentDayPresenter(private val view: CurrentDayContract.View,
-                          private val recyclerView: RecyclerView) : CurrentDayContract.Presenter {
+class CurrentDayPresenter(private val view: CurrentDayContract.View) : CurrentDayContract.Presenter {
 
     private val userId = FirebaseAuth.getInstance().currentUser!!.uid
     private val databaseRef = Firebase.database("https://goodmood-c69a1-default-rtdb.europe-west1.firebasedatabase.app/").reference
@@ -53,8 +50,11 @@ class CurrentDayPresenter(private val view: CurrentDayContract.View,
                     val entry = item.getValue(Entry::class.java)
                     entries.add(entry!!)
                 }
-                recyclerView.adapter = EntriesAdapter(entries)
+
+                view.onEntriesRead(entries)
+//                recyclerView.adapter = EntriesAdapter(entries)
             }
         })
+        view.onCurrentDayReady()
     }
 }
