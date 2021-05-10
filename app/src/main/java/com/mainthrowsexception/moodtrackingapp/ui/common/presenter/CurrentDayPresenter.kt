@@ -1,14 +1,12 @@
 package com.mainthrowsexception.moodtrackingapp.ui.common.presenter
 
 import android.util.Log
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.database.model.Entry
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.CurrentDayContract
 import java.time.ZonedDateTime
@@ -18,18 +16,17 @@ class CurrentDayPresenter(private val view: CurrentDayContract.View) : CurrentDa
     private val userId = FirebaseAuth.getInstance().currentUser!!.uid
     private val databaseRef = Firebase.database("https://goodmood-c69a1-default-rtdb.europe-west1.firebasedatabase.app/").reference
 
-    override fun getEntries() {
+    override fun getEntries(zonedDateTime: ZonedDateTime) {
         Log.i("CurrentDayPresenter", "getEntries() called")
 
-        val nowZoned: ZonedDateTime = ZonedDateTime.now()
-        val midnight: Long = nowZoned.toLocalDate().atStartOfDay(nowZoned.zone).toInstant().toEpochMilli()
-        val now = System.currentTimeMillis()
+        val startOfTheDay: Long = zonedDateTime.toLocalDate().atStartOfDay(zonedDateTime.zone).toInstant().toEpochMilli()
+        val endOfTheDay: Long = startOfTheDay + 86400000 // 24 h in milliseconds
 
         val query = databaseRef.child("entries")
             .child(userId)
             .orderByChild("created")
-            .startAt(midnight.toDouble())
-            .endAt(now.toDouble())
+            .startAt(startOfTheDay.toDouble())
+            .endAt(endOfTheDay.toDouble())
 
         val entries = ArrayList<Entry>()
 
@@ -52,7 +49,6 @@ class CurrentDayPresenter(private val view: CurrentDayContract.View) : CurrentDa
                 }
 
                 view.onEntriesRead(entries)
-//                recyclerView.adapter = EntriesAdapter(entries)
             }
         })
         view.onCurrentDayReady()

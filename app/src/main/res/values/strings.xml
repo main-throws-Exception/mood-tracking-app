@@ -134,4 +134,5 @@
 
     <string name="deletion_toast">Successfully deleted</string>
     <string name="get_entries_fail">Failed to get entries></string>
+    <string name="no_entries">No entries for this day</string>
 </resources>
