@@ -29,10 +29,6 @@ class CurrentDayFragment : BaseFragment(), CurrentDayContract.View {
     private var forwardArrow: ImageView? = null
     private var selectedDay: TextView? = null
 
-    // нахожусь в процессе познавания мира
-    // надо научиться автоматически брать зону, а пока так
-//    private val zone: ZoneId = ZoneId.of("Europe/Moscow")
-//    private var currentDay = ZonedDateTime.now(zone)
     private var currentDay = ZonedDateTime.now(ZoneId.systemDefault())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,12 +48,13 @@ class CurrentDayFragment : BaseFragment(), CurrentDayContract.View {
         presenter = CurrentDayPresenter(this)
 
         val bundle = this.arguments
-        val receivedParam = bundle!!.getString("selectedDate")
+        val receivedParam = bundle?.getString("selectedDate")
         if (receivedParam != null) {
             currentDay = ZonedDateTime.parse(receivedParam)
         }
 
         selectedDay!!.text = currentDay.dayOfMonth.toString() + " " + currentDay.month.toString()
+
         presenter.getEntries(currentDay)
 
         backArrow!!.setOnClickListener{
