@@ -1,6 +1,7 @@
 package com.mainthrowsexception.moodtrackingapp.ui.currentday
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -30,8 +31,9 @@ class CurrentDayFragment : BaseFragment(), CurrentDayContract.View {
 
     // нахожусь в процессе познавания мира
     // надо научиться автоматически брать зону, а пока так
-    private val zone: ZoneId = ZoneId.of("Europe/Moscow")
-    private var currentDay = ZonedDateTime.now(zone)
+//    private val zone: ZoneId = ZoneId.of("Europe/Moscow")
+//    private var currentDay = ZonedDateTime.now(zone)
+    private var currentDay = ZonedDateTime.now(ZoneId.systemDefault())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,6 +50,14 @@ class CurrentDayFragment : BaseFragment(), CurrentDayContract.View {
         rvEntries!!.layoutManager = LinearLayoutManager(view.context)
 
         presenter = CurrentDayPresenter(this)
+
+        val bundle = this.arguments
+        val receivedParam = bundle!!.getString("selectedDate")
+        if (receivedParam != null) {
+            currentDay = ZonedDateTime.parse(receivedParam)
+        }
+
+        selectedDay!!.text = currentDay.dayOfMonth.toString() + " " + currentDay.month.toString()
         presenter.getEntries(currentDay)
 
         backArrow!!.setOnClickListener{
