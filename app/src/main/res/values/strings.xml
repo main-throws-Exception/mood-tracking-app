@@ -135,4 +135,15 @@
     <string name="deletion_toast">Successfully deleted</string>
     <string name="get_entries_fail">Failed to get entries></string>
     <string name="no_entries">No entries for this day</string>
+
+    <string name="mood">Mood</string>
+    <string name="tags">Tags</string>
+    <string name="terrible_mood">Terrible</string>
+    <string name="bad_mood">Bad</string>
+    <string name="neutral_mood">Neutral</string>
+    <string name="good_mood">Good</string>
+    <string name="perfect_mood">Perfect</string>
+
+    <string name="mood_pie_chart_title">Mood in the last week</string>
+    <string name="tags_pie_chart_title">Most popular tags in the last week</string>
 </resources>
