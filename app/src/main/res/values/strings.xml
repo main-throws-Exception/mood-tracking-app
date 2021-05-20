@@ -19,11 +19,16 @@
     <string name="notification_sending_title">Send notifications</string>
     <string name="notification_remove_title">Remove notifications</string>
     <string name="theme_title">Theme</string>
-
     <string name="color_scheme_title">Current color scheme</string>
     <string name="saved_color_presets_title">Saved color Schemes</string>
     <string name="color_presets_title">Presets</string>
     <string name="notifications_title">Notifications</string>
+
+    <string name="language_preference_key">language</string>
+    <string name="notifications_switch_preference_key">notifications</string>
+    <string name="notification_time_preference_key">notification_time</string>
+    <string name="notification_remove_preference_key">notification_remove</string>
+    <string name="log_out_preference_key">log_out</string>
 
     <string name="new_notification_button_text">Add new notification</string>
 
