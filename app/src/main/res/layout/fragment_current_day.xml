@@ -6,11 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".ui.currentday.CurrentDayFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragment_current_day__rv_entires"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent">
+
+    <Toolbar
+        android:id="@+id/fragment_current_day__toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/blue"
+        android:logo="@drawable/ic_today_toolbar"
+        android:titleTextAppearance="@style/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:title="@string/today" />
+
+    <ImageView
+        android:id="@+id/fragment_current_day__back_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fragment_current_day__toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:contentDescription="Previous day" />
+
+        <TextView
+            android:id="@+id/fragment_current_day__selected_day"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="THE DAY"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@id/fragment_current_day__rv_entries"
+            app:layout_constraintEnd_toStartOf="@id/fragment_current_day__forward_arrow"
+            app:layout_constraintStart_toEndOf="@id/fragment_current_day__back_arrow"
+            app:layout_constraintTop_toBottomOf="@id/fragment_current_day__toolbar" />
+
+    <ImageView
+        android:id="@+id/fragment_current_day__forward_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_current_day__toolbar"
+        android:src="@drawable/ic_baseline_arrow_forward_24"
+        android:contentDescription="Next day" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_current_day__rv_entries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fragment_current_day__back_arrow"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

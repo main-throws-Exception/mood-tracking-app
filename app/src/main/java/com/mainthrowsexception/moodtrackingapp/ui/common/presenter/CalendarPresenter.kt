@@ -1,12 +1,10 @@
 package com.mainthrowsexception.moodtrackingapp.ui.common.presenter
 
-import android.text.format.DateUtils
 import android.util.Log
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -19,22 +17,34 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneOffset
-import java.time.temporal.TemporalAdjusters
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
-import kotlin.reflect.typeOf
 
 class CalendarPresenter(view: CalendarContract.View) : CalendarContract.Presenter {
 
     private var view: CalendarContract.View? = view
     private val entriesList: TreeMap<Int, MutableList<Entry>> = TreeMap<Int, MutableList<Entry>>()
     private val userId = FirebaseAuth.getInstance().currentUser!!.uid
-    private val databaseRef = Firebase.database("https://goodmood-c69a1-default-rtdb.europe-west1.firebasedatabase.app/").reference
+    private val databaseRef =
+        Firebase.database("https://goodmood-c69a1-default-rtdb.europe-west1.firebasedatabase.app/").reference
+    private lateinit var currentValueEventListener: ValueEventListener
+    private lateinit var currentQuery: Query
+    private lateinit var customCalendar: CustomCalendar
 
     override fun initCalendar(calendar: CustomCalendar) {
+        customCalendar = calendar
+
         // Default
         val descHashMap: HashMap<Any, Property> = HashMap()
+
+        val disabledProperty = Property()
+
+        disabledProperty.layoutResource = R.layout.calendar_disabled_view
+        disabledProperty.dateTextViewResource = R.id.calendar_disabled_view__text
+
+        descHashMap["disabled"] = disabledProperty
+
         val defaultProperty = Property()
 
         defaultProperty.layoutResource = R.layout.calendar_default_view
@@ -84,18 +94,20 @@ class CalendarPresenter(view: CalendarContract.View) : CalendarContract.Presente
 
         descHashMap["veryGood"] = veryGoodProperty
 
-        calendar.setMapDescToProp(descHashMap)
+        customCalendar.setMapDescToProp(descHashMap)
 
-        val dateHashMap: HashMap<Int, Any> = HashMap()
         val cal: Calendar = Calendar.getInstance()
 
-        val valueEventListener = object : ValueEventListener {
+        currentValueEventListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 entriesList.clear()
 
                 for (entrySnapshot in snapshot.children) {
                     val entry = entrySnapshot.getValue(Entry::class.java)
-                    val dayOfMonth = LocalDateTime.ofInstant(Instant.ofEpochMilli(entry!!.created), ZoneOffset.UTC).dayOfMonth
+                    val dayOfMonth = LocalDateTime.ofInstant(
+                        Instant.ofEpochMilli(entry!!.created),
+                        ZoneOffset.UTC
+                    ).dayOfMonth
 
                     if (entriesList[dayOfMonth] == null) {
                         entriesList[dayOfMonth] = ArrayList(listOf(entry))
@@ -104,8 +116,14 @@ class CalendarPresenter(view: CalendarContract.View) : CalendarContract.Presente
                     }
                 }
 
-                Log.i("onDataChange", "Received: ${entriesList.values.joinToString { list -> list.joinToString() }}")
-                setCalendarDate(dateHashMap, cal, calendar)
+                Log.i(
+                    "onDataChange",
+                    "Received: ${entriesList.values.joinToString { list -> list.joinToString() }}"
+                )
+
+                setCalendarDate(cal, customCalendar, getCalendarDate(cal))
+
+                view?.onCalendarReady()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -113,54 +131,114 @@ class CalendarPresenter(view: CalendarContract.View) : CalendarContract.Presente
             }
         }
 
-        val dateTimeNowMidnight = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0)
+//        val dateTimeNowMidnight = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0)
+//
+//        currentQuery = databaseRef.child("entries").child(userId)
+//            .orderByChild("created")
+//            .startAt(
+//                dateTimeNowMidnight.withDayOfMonth(1).atZone(ZoneOffset.UTC)?.toInstant()
+//                    ?.toEpochMilli()?.toDouble()!!
+//            )
+//            .endAt(
+//                dateTimeNowMidnight.plusMonths(1).minusSeconds(1).atZone(ZoneOffset.UTC)
+//                    ?.toInstant()?.toEpochMilli()?.toDouble()!!
+//            )
 
-        databaseRef.child("entries").child(userId)
+        val calendarAtStartOfMonth = cal.clone() as Calendar
+        calendarAtStartOfMonth.set(Calendar.DAY_OF_MONTH, 1)
+        calendarAtStartOfMonth.set(Calendar.HOUR, 0)
+        calendarAtStartOfMonth.clear(Calendar.MINUTE)
+        calendarAtStartOfMonth.clear(Calendar.SECOND)
+        calendarAtStartOfMonth.clear(Calendar.MILLISECOND)
+
+        val calendarAtEndOfMonth = calendarAtStartOfMonth.clone() as Calendar
+        calendarAtEndOfMonth.add(Calendar.MONTH, 1)
+
+        currentQuery = databaseRef.child("entries").child(userId)
             .orderByChild("created")
-            .startAt(dateTimeNowMidnight.withDayOfMonth(1).atZone(ZoneOffset.UTC)?.toInstant()?.toEpochMilli()?.toDouble()!!)
-            .endAt(dateTimeNowMidnight.withDayOfMonth(LocalDate.now().lengthOfMonth()).plusDays(1).minusSeconds(1).atZone(ZoneOffset.UTC)?.toInstant()?.toEpochMilli()?.toDouble()!!)
-            .addValueEventListener(valueEventListener)
+            .startAt(
+                calendarAtStartOfMonth.timeInMillis.toDouble()
+            )
+            .endAt(
+                calendarAtEndOfMonth.timeInMillis.toDouble()
+            )
 
-        for (i in 0..LocalDate.now().lengthOfMonth()) {
-            var mood = "default"
+        currentQuery.addValueEventListener(currentValueEventListener)
+    }
 
-            val curDayEntriesList = entriesList[i]
+    override fun onMonthChanged(newMonth: Calendar?) {
+        val calendarAtStartOfMonth = newMonth?.clone() as Calendar
+        calendarAtStartOfMonth.set(Calendar.DAY_OF_MONTH, 1)
+        calendarAtStartOfMonth.set(Calendar.HOUR, 0)
+        calendarAtStartOfMonth.clear(Calendar.MINUTE)
+        calendarAtStartOfMonth.clear(Calendar.SECOND)
+        calendarAtStartOfMonth.clear(Calendar.MILLISECOND)
 
-            var moodAvg: Int = -1
+        val calendarAtEndOfMonth = calendarAtStartOfMonth.clone() as Calendar
+        calendarAtEndOfMonth.add(Calendar.MONTH, 1)
 
-            if (curDayEntriesList != null) {
-                moodAvg = curDayEntriesList[0].mood
+        currentQuery.removeEventListener(currentValueEventListener)
 
-                for (j in 1..curDayEntriesList.size) {
-                    val curMood = curDayEntriesList[j].mood
+        currentQuery = databaseRef.child("entries").child(userId)
+            .orderByChild("created")
+            .startAt(
+                calendarAtStartOfMonth.timeInMillis.toDouble()
+            )
+            .endAt(
+                calendarAtEndOfMonth.timeInMillis.toDouble()
+            )
 
-                    if (curMood != -1) {
-                        moodAvg += curMood
+        currentValueEventListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                entriesList.clear()
+
+                for (entrySnapshot in snapshot.children) {
+                    val entry = entrySnapshot.getValue(Entry::class.java)
+                    val dayOfMonth = LocalDateTime.ofInstant(
+                        Instant.ofEpochMilli(entry!!.created),
+                        ZoneOffset.UTC
+                    ).dayOfMonth
+
+                    if (entriesList[dayOfMonth] == null) {
+                        entriesList[dayOfMonth] = ArrayList(listOf(entry))
+                    } else {
+                        entriesList[dayOfMonth]?.add(entry)
                     }
                 }
 
-                moodAvg /= curDayEntriesList.size
+                Log.i(
+                    "onDataChange",
+                    "Received: ${entriesList.values.joinToString { list -> list.joinToString() }}"
+                )
+
+                setCalendarDate(newMonth, customCalendar, getCalendarDate(newMonth))
+
+                view?.onCalendarReady()
             }
 
-            when (moodAvg) {
-                -1 -> mood = "default"
-                0 -> mood = "veryBad"
-                1 -> mood = "bad"
-                2 -> mood = "neutral"
-                3 -> mood = "good"
-                4 -> mood = "veryGood"
+            override fun onCancelled(error: DatabaseError) {
+                return
             }
-
-            dateHashMap[i] = mood
         }
 
-        dateHashMap[cal.get(Calendar.DAY_OF_MONTH)] = "current"
-
-        calendar.setDate(cal, dateHashMap)
+        currentQuery.addValueEventListener(currentValueEventListener)
     }
 
-    private fun setCalendarDate(dateHashMap: HashMap<Int, Any>, cal: Calendar, calendar: CustomCalendar) {
-        for (i in 0..LocalDate.now().lengthOfMonth()) {
+    private fun setCalendarDate(
+        cal: Calendar,
+        calendar: CustomCalendar,
+        dateHashMap: MutableMap<Int, Any>
+    ) {
+        calendar.setDate(cal, dateHashMap)
+        view?.onCalendarReady()
+    }
+
+    private fun getCalendarDate(
+        cal: Calendar
+    ) : MutableMap<Int, Any> {
+        val dateHashMap: MutableMap<Int, Any> = HashMap()
+
+        for (i in 0..cal.getActualMaximum(Calendar.DAY_OF_MONTH)) {
             var mood = "default"
 
             val curDayEntriesList = entriesList[i]
@@ -193,8 +271,12 @@ class CalendarPresenter(view: CalendarContract.View) : CalendarContract.Presente
             dateHashMap[i] = mood
         }
 
-        dateHashMap[cal.get(Calendar.DAY_OF_MONTH)] = "current"
+        if ((cal.get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)) &&
+            (cal.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH))) {
+                Log.i("currentDateCheck", "passed")
+            dateHashMap[cal.get(Calendar.DAY_OF_MONTH)] = "current"
+        }
 
-        calendar.setDate(cal, dateHashMap)
+        return dateHashMap
     }
 }

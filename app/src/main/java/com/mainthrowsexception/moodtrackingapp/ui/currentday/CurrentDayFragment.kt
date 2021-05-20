@@ -1,49 +1,94 @@
 package com.mainthrowsexception.moodtrackingapp.ui.currentday
 
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.database.model.Entry
-import com.mainthrowsexception.moodtrackingapp.util.Generator
+import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
+import com.mainthrowsexception.moodtrackingapp.ui.common.contract.CurrentDayContract
+import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.CurrentDayPresenter
+import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.util.*
 
 
-class CurrentDayFragment : Fragment() {
+class CurrentDayFragment : BaseFragment(), CurrentDayContract.View {
 
+    private lateinit var presenter: CurrentDayPresenter
     private var rvEntries: RecyclerView? = null
-    private val entries = generateEntryList()
+    private var toolbar: Toolbar? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val view: View = inflater.inflate(R.layout.fragment_current_day, container, false)
-        rvEntries = view.findViewById(R.id.fragment_current_day__rv_entires)
+    private var backArrow: ImageView? = null
+    private var forwardArrow: ImageView? = null
+    private var selectedDay: TextView? = null
+
+    private var currentDay = ZonedDateTime.now(ZoneId.systemDefault())
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        toolbar = view.findViewById(R.id.fragment_current_day__toolbar)
+
+        backArrow = view.findViewById(R.id.fragment_current_day__back_arrow)
+        forwardArrow = view.findViewById(R.id.fragment_current_day__forward_arrow)
+
+        selectedDay = view.findViewById(R.id.fragment_current_day__selected_day)
+        selectedDay!!.text = currentDay.dayOfMonth.toString() + " " + currentDay.month.toString()
+
+        rvEntries = view.findViewById(R.id.fragment_current_day__rv_entries)
         rvEntries!!.layoutManager = LinearLayoutManager(view.context)
-        rvEntries!!.adapter = EntriesAdapter(entries as MutableList<Entry>)
 
-        return view
-    }
+        presenter = CurrentDayPresenter(this)
 
-    private fun generateEntryList(): List<Entry> {
-        val generator = Generator()
-        val entriesList: MutableList<Entry> = ArrayList()
-
-        for (i in 0..generator.nextInt(25)) {
-            entriesList.add(Entry(
-                "0",
-                "0",
-                generator.string(20),
-                generator.nextInt(5),
-                System.currentTimeMillis() - generator.nextInt(100) * 1000
-            ))
+        val bundle = this.arguments
+        val receivedParam = bundle?.getString("selectedDate")
+        if (receivedParam != null) {
+            currentDay = ZonedDateTime.parse(receivedParam)
         }
 
-        return entriesList.sortedBy { it.created }
+        selectedDay!!.text = currentDay.dayOfMonth.toString() + " " + currentDay.month.toString()
+
+        presenter.getEntries(currentDay)
+
+        backArrow!!.setOnClickListener{
+            onDayChanged(back = true)
+        }
+
+        forwardArrow!!.setOnClickListener {
+            onDayChanged(back = false)
+        }
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.fragment_current_day
+    }
+
+    override fun onCurrentDayReady() {
+        navigationPresenter.stopLoading()
+    }
+
+    override fun onEntriesRead(entries: ArrayList<Entry>) {
+        if (entries.size == 0) {
+            Toast.makeText(activity?.applicationContext, R.string.no_entries, Toast.LENGTH_SHORT).show()
+        }
+        rvEntries?.adapter = EntriesAdapter(entries)
+    }
+
+    override fun onDayChanged(back: Boolean) {
+        navigationPresenter.startLoading()
+        if (back) {
+            currentDay = currentDay.minusDays(1)
+        } else {
+            currentDay = currentDay.plusDays(1)
+        }
+        selectedDay!!.text = currentDay.dayOfMonth.toString() + " " + currentDay.month.toString()
+        presenter.getEntries(currentDay)
     }
 }
