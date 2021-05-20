@@ -131,4 +131,9 @@
     <string name="excellent">excellent</string>
     <string name="slider_thumb">slider_thumb</string>
     <string name="tick">tick</string>
+    <string name="language_preference_key">language</string>
+    <string name="notifications_switch_preference_key">notifications</string>
+    <string name="notification_time_preference_key">notification_time</string>
+    <string name="notification_remove_preference_key">notification_remove</string>
+    <string name="log_out_preference_key">log_out</string>
 </resources>

@@ -1,17 +1,18 @@
 package com.mainthrowsexception.moodtrackingapp.ui.common
 
+import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.AppCompatButton
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.preference.PreferenceManager
 import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
+import com.mainthrowsexception.moodtrackingapp.ui.common.base.BasePreferenceFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.MainActivityContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.MainActivityPresenter
+import com.mainthrowsexception.moodtrackingapp.ui.settings.SettingsPreferenceFragment
+import com.mainthrowsexception.moodtrackingapp.util.AppUtil
 
 class MainActivity : AppCompatActivity(), MainActivityContract.View {
 
@@ -24,7 +25,6 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
 
         presenter = MainActivityPresenter(this)
         presenter.setHomeFragment()
-
 //        val navHostFragment =
 //            supportFragmentManager.findFragmentById(R.id.activity_main__nav_host_fragment) as NavHostFragment
 //        val navController = navHostFragment.navController
@@ -45,7 +45,21 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
 //            }
     }
 
+    override fun attachBaseContext(newBase: Context?) {
+        val language = PreferenceManager.getDefaultSharedPreferences(newBase).getString("language", "")!!
+        val context = AppUtil.changeLang(newBase, language)
+        super.attachBaseContext(context)
+    }
+
     override fun setFragment(fragment: BaseFragment) {
+        fragment.attachPresenter(presenter)
+        fragment.onAttach(applicationContext)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+    }
+
+    override fun setFragment(fragment: BasePreferenceFragment) {
         fragment.attachPresenter(presenter)
         fragment.onAttach(applicationContext)
         supportFragmentManager.beginTransaction()

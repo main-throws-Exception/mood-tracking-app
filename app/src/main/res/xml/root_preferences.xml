@@ -6,11 +6,11 @@
         app:title="@string/general_header">
 
         <ListPreference
-            app:defaultValue="eng"
+            app:defaultValue="en"
             app:entries="@array/language_entries"
             app:entryValues="@array/language_values"
             app:iconSpaceReserved="false"
-            app:key="language"
+            app:key="@string/language_preference_key"
             app:title="@string/language_title"
             app:useSimpleSummaryProvider="true" />
 
@@ -30,23 +30,25 @@
 
         <SwitchPreferenceCompat
             app:iconSpaceReserved="false"
-            app:key="notifications"
+            app:key="@string/notifications_switch_preference_key"
             app:title="@string/notification_sending_title" />
 
         <Preference
             app:iconSpaceReserved="false"
-            app:key="notification_time"
-            app:title="Choose notifications' time" />
+            app:key="@string/notification_time_preference_key"
+            app:title="Choose notifications' time"
+            app:isPreferenceVisible="false" />
 
 
         <ListPreference
-            app:defaultValue="0_00"
+            app:defaultValue="never"
             app:entries="@array/notifications_remove_entries"
             app:entryValues="@array/notifications_remove_values"
             app:iconSpaceReserved="false"
-            app:key="notification_remove"
+            app:key="@string/notification_remove_preference_key"
             app:title="@string/notification_remove_title"
-            app:useSimpleSummaryProvider="true" />
+            app:useSimpleSummaryProvider="true"
+            app:isPreferenceVisible="false" />
 
     </PreferenceCategory>
 
@@ -96,6 +98,11 @@
             app:iconSpaceReserved="false"
             app:key="export"
             app:title="Export data" />
+
+        <Preference
+            app:iconSpaceReserved="false"
+            app:key="@string/log_out_preference_key"
+            app:title="Log out" />
 
     </PreferenceCategory>
 
