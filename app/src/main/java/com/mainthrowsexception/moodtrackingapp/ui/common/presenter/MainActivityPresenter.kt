@@ -1,6 +1,7 @@
 package com.mainthrowsexception.moodtrackingapp.ui.common.presenter
 
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
+import com.mainthrowsexception.moodtrackingapp.ui.common.base.BasePreferenceFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.MainActivityContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.nav.FragmentNavigation
 import com.mainthrowsexception.moodtrackingapp.ui.login.LoginFragment

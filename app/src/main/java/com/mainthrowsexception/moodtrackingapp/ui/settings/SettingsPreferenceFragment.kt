@@ -53,6 +53,8 @@ class SettingsPreferenceFragment : BasePreferenceFragment(), SettingsContract.Vi
         setNotificationsVisibility(notificationsPreference.isChecked)
 
         presenter = SettingsPresenter(this)
+
+        navigationPresenter.stopLoading()
     }
 
     override fun onLogout() {

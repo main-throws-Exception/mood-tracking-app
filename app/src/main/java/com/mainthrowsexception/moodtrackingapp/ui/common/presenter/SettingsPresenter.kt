@@ -8,8 +8,7 @@ import java.util.*
 class SettingsPresenter(view: SettingsContract.View) : SettingsContract.Presenter {
     private var view: SettingsContract.View? = view
     override fun doLogout() {
-        //FirebaseAuth.getInstance().signOut()
-        Log.i("Settings presenter", "Do log out")
+        FirebaseAuth.getInstance().signOut()
         view?.onLogout()
     }
 

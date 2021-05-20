@@ -15,7 +15,6 @@ import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.LoggingInContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.LoggingInPresenter
 import com.mainthrowsexception.moodtrackingapp.ui.currentday.CurrentDayFragment
-import com.mainthrowsexception.moodtrackingapp.ui.settings.SettingsFragment
 
 class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickListener {
 
