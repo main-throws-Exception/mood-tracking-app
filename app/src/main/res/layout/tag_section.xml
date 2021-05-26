@@ -13,24 +13,24 @@
         android:layout_marginTop="10dp"
         />
 
-    <include
-        android:id="@+id/mood_tag__middle_ll2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        layout="@layout/mood_tag"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@id/mood_tag__middle_ll"
-        />
-<!--        android:layout_marginStart="-7dp"-->
+<!--    <include-->
+<!--        android:id="@+id/mood_tag__middle_ll2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        layout="@layout/mood_tag"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginStart="5dp"-->
+<!--        android:layout_toEndOf="@id/mood_tag__middle_ll"-->
+<!--        />-->
+<!--&lt;!&ndash;        android:layout_marginStart="-7dp"&ndash;&gt;-->
 
-    <include
-        android:id="@+id/mood_tag__middle_ll3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        layout="@layout/mood_tag"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/mood_tag__middle_ll"
-        />
+<!--    <include-->
+<!--        android:id="@+id/mood_tag__middle_ll3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        layout="@layout/mood_tag"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_below="@id/mood_tag__middle_ll"-->
+<!--        />-->
 
 </RelativeLayout>

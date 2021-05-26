@@ -1,10 +1,10 @@
 package com.mainthrowsexception.moodtrackingapp.database.model
 
 data class Entry (
-    val uid: String = "",
-    val userId: String = "0",
-    val note: String = "",
-    val tags: ArrayList<String> = ArrayList(),
-    val mood: Int = -1,
-    val created: Long = System.currentTimeMillis()
+    var uid: String = "",
+    var userId: String = "0",
+    var note: String = "",
+    var tags: MutableList<String> = ArrayList(),
+    var mood: Int = -1,
+    var created: Long = System.currentTimeMillis()
 )

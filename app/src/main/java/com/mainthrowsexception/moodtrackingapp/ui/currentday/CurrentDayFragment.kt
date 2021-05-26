@@ -71,7 +71,7 @@ class CurrentDayFragment : BaseFragment(), CurrentDayContract.View {
         if (entries.size == 0) {
             Toast.makeText(activity?.applicationContext, R.string.no_entries, Toast.LENGTH_SHORT).show()
         }
-        rvEntries?.adapter = EntriesAdapter(entries)
+        rvEntries?.adapter = EntriesAdapter(entries, navigationPresenter)
     }
 
     override fun onDayChanged(back: Boolean) {
