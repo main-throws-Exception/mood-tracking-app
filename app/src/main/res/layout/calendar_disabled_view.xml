@@ -9,7 +9,7 @@
 
     <androidx.cardview.widget.CardView
         style="@style/calendar_card"
-        app:cardBackgroundColor="@color/light_grey"
+        app:cardBackgroundColor="@color/neutral"
         app:cardCornerRadius="4dp">
 
         <TextView
