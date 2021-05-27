@@ -26,6 +26,14 @@ class MainActivityPresenter(view: MainActivityContract.View) : MainActivityContr
         view?.stopLoading()
     }
 
+    override fun displayNav() {
+        view?.displayNav()
+    }
+
+    override fun hideNav() {
+        view?.hideNav()
+    }
+
     override fun setHomeFragment() {
         view?.setFragment(LoginFragment())
     }

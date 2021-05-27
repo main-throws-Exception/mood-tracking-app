@@ -13,5 +13,7 @@ interface FragmentNavigation {
         fun addFragment(fragment: BasePreferenceFragment)
         fun startLoading()
         fun stopLoading()
+        fun displayNav()
+        fun hideNav()
     }
 }

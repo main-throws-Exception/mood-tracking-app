@@ -13,10 +13,14 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mainthrowsexception.moodtrackingapp.R
+import com.mainthrowsexception.moodtrackingapp.ui.calendar.CalendarFragment
+import com.mainthrowsexception.moodtrackingapp.ui.charts.ChartsFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BasePreferenceFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.MainActivityContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.MainActivityPresenter
+import com.mainthrowsexception.moodtrackingapp.ui.currentday.CurrentDayFragment
+import com.mainthrowsexception.moodtrackingapp.ui.entry.EntryFragment
 import com.mainthrowsexception.moodtrackingapp.ui.login.LoginFragment
 import com.mainthrowsexception.moodtrackingapp.ui.settings.SettingsPreferenceFragment
 import com.mainthrowsexception.moodtrackingapp.util.AppUtil
@@ -25,11 +29,34 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
 
     private lateinit var presenter: MainActivityPresenter
     private lateinit var loading: View
+    private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var bottomNavigationViewButton: AppCompatButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setContentView(R.layout.activity_main)
+
+        bottomNavigationView = findViewById(R.id.bottom_nav_view)
+        bottomNavigationViewButton = findViewById(R.id.bottom_nav_view_button)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            var selectedFragment: BaseFragment = CurrentDayFragment()
+            when (item.itemId) {
+                R.id.currentDayFragment -> selectedFragment = CurrentDayFragment()
+                R.id.calendarFragment -> selectedFragment = CalendarFragment()
+                R.id.entryFragment -> selectedFragment = EntryFragment()
+                R.id.settingsFragment -> {
+                    setFragment(SettingsPreferenceFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
+            }
+            setFragment(selectedFragment)
+            true
+        }
+        bottomNavigationViewButton.setOnClickListener {
+            setFragment(EntryFragment())
+        }
 
         loading = findViewById(R.id.loading_panel)
 
@@ -86,6 +113,16 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
 
     override fun stopLoading() {
         loading.visibility = View.GONE
+    }
+
+    override fun displayNav() {
+        bottomNavigationView.visibility = View.VISIBLE
+        bottomNavigationViewButton.visibility = View.VISIBLE
+    }
+
+    override fun hideNav() {
+        bottomNavigationView.visibility = View.GONE
+        bottomNavigationViewButton.visibility = View.GONE
     }
 
     override fun setFragment(fragment: BasePreferenceFragment) {

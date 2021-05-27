@@ -13,5 +13,7 @@ interface MainActivityContract {
         fun setFragment(fragment: BasePreferenceFragment)
         fun startLoading()
         fun stopLoading()
+        fun displayNav()
+        fun hideNav()
     }
 }

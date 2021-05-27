@@ -14,6 +14,7 @@ import com.mainthrowsexception.moodtrackingapp.ui.calendar.CalendarFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.LoginContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.LoginPresenter
+import com.mainthrowsexception.moodtrackingapp.ui.currentday.CurrentDayFragment
 
 class LoginFragment : BaseFragment(), LoginContract.View, View.OnClickListener {
 
@@ -84,7 +85,8 @@ class LoginFragment : BaseFragment(), LoginContract.View, View.OnClickListener {
     override fun onGoogleSignInSuccess() {
         navigationPresenter.stopLoading()
         Toast.makeText(activity?.applicationContext, "Success", Toast.LENGTH_SHORT).show()
-        navigationPresenter.addFragment(CalendarFragment())
+        navigationPresenter.displayNav()
+        navigationPresenter.addFragment(CurrentDayFragment())
     }
 
     companion object {
