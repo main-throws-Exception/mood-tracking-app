@@ -3,13 +3,10 @@ package com.mainthrowsexception.moodtrackingapp.ui.common
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatButton
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
+import androidx.fragment.app.FragmentManager
 import androidx.preference.PreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mainthrowsexception.moodtrackingapp.R
@@ -69,6 +66,7 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
         homeFragment.onAttach(applicationContext)
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, homeFragment)
+            .addToBackStack("home")
             .commit()
 
 //        presenter.setHomeFragment()
@@ -100,10 +98,15 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
     }
 
     override fun setFragment(fragment: BaseFragment) {
+        if (fragment is CurrentDayFragment) {
+            supportFragmentManager.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        }
+
         fragment.attachPresenter(presenter)
         fragment.onAttach(applicationContext)
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
+            .addToBackStack(fragment::class.simpleName)
             .commit()
         startLoading()
     }
