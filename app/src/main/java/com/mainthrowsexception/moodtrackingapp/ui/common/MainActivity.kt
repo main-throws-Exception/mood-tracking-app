@@ -2,6 +2,7 @@ package com.mainthrowsexception.moodtrackingapp.ui.common
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -98,9 +99,18 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
     }
 
     override fun setFragment(fragment: BaseFragment) {
+        var doStartLoading = true
+
         if (fragment is CurrentDayFragment) {
-            supportFragmentManager.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            supportFragmentManager.popBackStackImmediate("home", FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
+
+        if (fragment is LoginFragment) {
+            supportFragmentManager.popBackStackImmediate("null", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            doStartLoading = false
+        }
+
+        supportFragmentManager.popBackStackImmediate(fragment::class.simpleName, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
         fragment.attachPresenter(presenter)
         fragment.onAttach(applicationContext)
@@ -108,7 +118,29 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
             .replace(R.id.fragment_container, fragment)
             .addToBackStack(fragment::class.simpleName)
             .commit()
-        startLoading()
+        if (doStartLoading) {
+            startLoading()
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            bottomNavigationView.selectedItemId = getFragmentIdFromName(supportFragmentManager.getBackStackEntryAt(supportFragmentManager.backStackEntryCount - 1).name.toString())
+        }
+    }
+
+    private fun getFragmentIdFromName(name: String): Int {
+        return when (name) {
+            "CurrentDayFragment" -> R.id.currentDayFragment
+            "CalendarFragment" -> R.id.calendarFragment
+            "EntryFragment" -> R.id.entryFragment
+            "ChartsFragment" -> R.id.chartsFragment
+            "SettingsFragment" -> R.id.settingsFragment
+
+            else -> R.id.currentDayFragment
+        }
     }
 
     override fun startLoading() {
