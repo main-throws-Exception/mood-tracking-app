@@ -27,13 +27,13 @@ class MoodLineChartFragment : Fragment() {
         val lineChart: LineChart = view.findViewById(R.id.fragment_mood_line_chart__chart)
 
         val moodList = listOf(
-            Entry(1f, 75f),
-            Entry(2f, 50f),
-            Entry(3f, 50f),
+            Entry(1f, 3f),
+            Entry(2f, 2f),
+            Entry(3f, 2f),
             Entry(4f, 0f),
-            Entry(5f, 25f),
-            Entry(6f, 100f),
-            Entry(7f, 75f),
+            Entry(5f, 1f),
+            Entry(6f, 4f),
+            Entry(7f, 3f),
         )
 
         val colors = listOf(
@@ -71,9 +71,9 @@ class MoodLineChartFragment : Fragment() {
         lineChart.axisLeft.apply {
             valueFormatter = AxisFormatter(AxisFormatter.AxisFlag.Y)
             setDrawGridLines(false)
-            granularity = 25f
+            granularity = 1f
             axisMinimum = 0f
-            axisMaximum = 100f
+            axisMaximum = 4f
         }
 
         lineChart.axisRight.apply {
@@ -85,6 +85,7 @@ class MoodLineChartFragment : Fragment() {
 
         return view
     }
+
 
     private class AxisFormatter(_axisFlag: AxisFlag) : ValueFormatter() {
 
@@ -103,13 +104,13 @@ class MoodLineChartFragment : Fragment() {
 
         private fun getXAxisLabel(value: Float): String {
             return when (value) {
-                1f -> "Mo"
-                2f -> "Tu"
-                3f -> "We"
-                4f -> "Th"
-                5f -> "Fr"
-                6f -> "Sa"
-                7f -> "Su"
+                0f -> "Mo"
+                1f -> "Tu"
+                2f -> "We"
+                3f -> "Th"
+                4f -> "Fr"
+                5f -> "Sa"
+                6f -> "Su"
                 else -> ""
             }
         }
@@ -117,10 +118,10 @@ class MoodLineChartFragment : Fragment() {
         private fun getYAxisLabel(value: Float): String {
             return when (value) {
                 0f -> "Terrible"
-                25f -> "Bad"
-                50f -> "Neutral"
-                75f -> "Good"
-                100f -> "Excellent"
+                1f -> "Bad"
+                2f -> "Neutral"
+                3f -> "Good"
+                4f -> "Excellent"
                 else -> ""
             }
         }

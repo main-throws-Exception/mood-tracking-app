@@ -156,6 +156,13 @@
     <string name="neutral_mood">Neutral</string>
     <string name="good_mood">Good</string>
     <string name="perfect_mood">Perfect</string>
+    <string name="monday">Mo</string>
+    <string name="tuesday">Tu</string>
+    <string name="wednesday">We</string>
+    <string name="thursday">Th</string>
+    <string name="friday">Fr</string>
+    <string name="saturday">Sa</string>
+    <string name="sunday">Su</string>
 
     <string name="mood_pie_chart_title">Mood in the last week</string>
     <string name="tags_pie_chart_title">Most popular tags in the last week</string>
