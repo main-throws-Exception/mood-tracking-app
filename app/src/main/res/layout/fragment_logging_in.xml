@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
-    tools:context=".LoggingInFragment">
+    tools:context=".ui.login.LoggingInFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -85,7 +85,8 @@
             app:layout_constraintBottom_toTopOf="@+id/fragment_logging_in___logging_in_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_logging_in__email" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_logging_in__email"
+            android:autofillHints="password" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/fragment_logging_in___logging_in_button"

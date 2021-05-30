@@ -6,16 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".EntryTitleFragment"
-    >
+    tools:context=".ui.entry.EntryTitleFragment"
+    tools:ignore="UseCompoundDrawables">
 
 <TextView
     android:id="@+id/entry__title_tv"
     android:layout_width="wrap_content"
     android:layout_height="30dp"
+    tools:text="Tags"
     android:text="Tags"
-    android:textSize="16dp"
-    />
+    android:textSize="16sp"
+    tools:ignore="HardcodedText" />
 
 <ImageView
     android:id="@+id/entry__title_line_iv"
@@ -23,6 +24,6 @@
     android:layout_height="wrap_content"
     android:background="@drawable/ic_entry__title_line"
     android:layout_marginTop="-8dp"
-    />
+    tools:ignore="ContentDescription" />
 
 </LinearLayout>

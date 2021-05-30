@@ -8,9 +8,7 @@
     android:padding="2dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="40dp"
-        android:layout_height="32dp"
-        android:layout_margin="4dp"
+        style="@style/calendar_card"
         app:cardBackgroundColor="@color/good_mood"
         app:cardCornerRadius="4dp">
 

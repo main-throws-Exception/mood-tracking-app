@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.mainthrowsexception.moodtrackingapp.LoginFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_logging_in"
-        android:name="com.mainthrowsexception.moodtrackingapp.LoggingInFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.ui.login.LoggingInFragment"
         android:label="fragment_logging_in"
         tools:layout="@layout/fragment_logging_in" >
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_signing_up"
-        android:name="com.mainthrowsexception.moodtrackingapp.SigningUpFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.ui.login.SigningUpFragment"
         android:label="fragment_signing_up"
         tools:layout="@layout/fragment_signing_up" >
         <action
@@ -41,26 +41,26 @@
     </fragment>
     <fragment
         android:id="@+id/currentDayFragment"
-        android:name="com.mainthrowsexception.moodtrackingapp.CurrentDayFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.ui.currentday.CurrentDayFragment"
         android:label="fragment_current_day"
         tools:layout="@layout/fragment_current_day" />
     <fragment
         android:id="@+id/entryFragment"
-        android:name="com.mainthrowsexception.moodtrackingapp.EntryFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.ui.entry.EntryFragment"
         android:label="fragment_entry"
         tools:layout="@layout/fragment_entry" />
     <fragment
         android:id="@+id/chartsFragment"
-        android:name="com.mainthrowsexception.moodtrackingapp.ChartsFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.ui.charts.ChartsFragment"
         android:label="fragment_charts"
         tools:layout="@layout/fragment_charts" />
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.mainthrowsexception.moodtrackingapp.CalendarFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.ui.calendar.CalendarFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.mainthrowsexception.moodtrackingapp.SettingsFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.ui.settings.SettingsPreferenceFragment"
         android:label="SettingsFragment" />
 </navigation>

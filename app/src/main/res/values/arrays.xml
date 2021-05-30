@@ -6,8 +6,8 @@
     </string-array>
 
     <string-array name="language_values">
-        <item>rus</item>
-        <item>eng</item>
+        <item>ru</item>
+        <item>en</item>
     </string-array>
 
     <string-array name="notifications_remove_entries">
@@ -20,12 +20,12 @@
     </string-array>
 
     <string-array name="notifications_remove_values">
-        <item>0_00</item>
-        <item>0_05</item>
-        <item>0_15</item>
-        <item>0_30</item>
-        <item>1_00</item>
-        <item>2_00</item>
+        <item>never</item>
+        <item>00:05</item>
+        <item>00:15</item>
+        <item>00:30</item>
+        <item>01:00</item>
+        <item>02:00</item>
     </string-array>
 
     <string-array name="theme_entries">

@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalendarFragment"
-    >
+    tools:context=".ui.calendar.CalendarFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <org.naishadhparmar.zcustomcalendar.CustomCalendar
+        android:id="@+id/fragment_calendar__calendar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <org.naishadhparmar.zcustomcalendar.CustomCalendar
-            android:id="@+id/fragment_calendar__calendar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content"
+        app:day_of_week_length="3"
+        app:day_of_week_start_from="monday"
+        app:month_year_format="full_month__with_year"
+        app:row_height="75dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.15"/>
 
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

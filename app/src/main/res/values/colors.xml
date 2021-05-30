@@ -18,14 +18,15 @@
     <color name="dark_grey">#616161</color>
     <color name="very_light_grey">#C4C4C4</color>
     <color name="light_red">#D25657</color>
-    <color name="very_light_red">#D36F70</color>
-    <color name="light_orange">#FFC268</color>
-    <color name="light_grey">#BEBEBF</color>
-    <color name="light_yellow">#F1E367</color>
     <color name="light_green">#B6CB9E</color>
+    <color name="terrible">#D36F70</color>
+    <color name="bad">#FFC268</color>
+    <color name="neutral">#BEBEBF</color>
+    <color name="good">#F1E367</color>
+    <color name="excellent">#B6CB9E</color>
     <color name="very_bad_mood">#BA6B6C</color>
     <color name="bad_mood">#FFC268</color>
     <color name="neutral_mood">#AEAEAE</color>
-    <color name="good_mood">#A3C181</color>
-    <color name="very_good_mood">#83E116</color>
+    <color name="good_mood">#a0af22</color>
+    <color name="very_good_mood">#5A9216</color>
 </resources>

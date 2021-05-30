@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_slider__track"
         android:layout_gravity="center"
-        />
+        android:contentDescription="@string/slider" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            android:contentDescription="@string/terrible_point" />
 
         <ImageView
             android:id="@+id/mood_slider__bad_point"
@@ -35,7 +35,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/mood_slider__terrible_point"
             app:layout_constraintEnd_toStartOf="@id/mood_slider__neutral_point"
-            />
+            android:contentDescription="@string/bad_point" />
 
         <ImageView
             android:id="@+id/mood_slider__neutral_point"
@@ -46,7 +46,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/mood_slider__terrible_point"
             app:layout_constraintEnd_toStartOf="@id/mood_slider__excellent_point"
-            />
+            android:contentDescription="@string/neutral_point" />
 
         <ImageView
             android:id="@+id/mood_slider__good_point"
@@ -57,7 +57,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/mood_slider__neutral_point"
             app:layout_constraintEnd_toStartOf="@id/mood_slider__excellent_point"
-            />
+            android:contentDescription="@string/good_point" />
 
         <ImageView
             android:id="@+id/mood_slider__excellent_point"
@@ -66,7 +66,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            />
+            android:contentDescription="@string/excellent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -75,6 +75,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_slider__thumb"
         android:layout_gravity="center_vertical"
-        />
+        android:contentDescription="@string/slider_thumb" />
 
 </FrameLayout>
