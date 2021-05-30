@@ -3,23 +3,18 @@ package com.mainthrowsexception.moodtrackingapp.ui.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
-import androidx.navigation.Navigation
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
 import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.ui.calendar.CalendarFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.LoginContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.LoginPresenter
+import com.mainthrowsexception.moodtrackingapp.ui.currentday.CurrentDayFragment
 
 class LoginFragment : BaseFragment(), LoginContract.View, View.OnClickListener {
 
@@ -90,7 +85,8 @@ class LoginFragment : BaseFragment(), LoginContract.View, View.OnClickListener {
     override fun onGoogleSignInSuccess() {
         navigationPresenter.stopLoading()
         Toast.makeText(activity?.applicationContext, "Success", Toast.LENGTH_SHORT).show()
-        navigationPresenter.addFragment(CalendarFragment())
+        navigationPresenter.displayNav()
+        navigationPresenter.addFragment(CurrentDayFragment())
     }
 
     companion object {

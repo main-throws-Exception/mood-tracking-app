@@ -8,11 +8,13 @@ import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.CalendarContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.CalendarPresenter
+import com.mainthrowsexception.moodtrackingapp.ui.currentday.CurrentDayFragment
 import org.naishadhparmar.zcustomcalendar.CustomCalendar
 import org.naishadhparmar.zcustomcalendar.OnDateSelectedListener
 import org.naishadhparmar.zcustomcalendar.OnNavigationButtonClickedListener
+import java.time.LocalDateTime
+import java.time.ZoneId
 import java.util.*
-import kotlin.collections.HashMap
 
 class CalendarFragment : BaseFragment(), CalendarContract.View, OnDateSelectedListener,
     OnNavigationButtonClickedListener {
@@ -46,6 +48,16 @@ class CalendarFragment : BaseFragment(), CalendarContract.View, OnDateSelectedLi
         curToast?.cancel()
         curToast = Toast.makeText(activity?.applicationContext, sDate, Toast.LENGTH_SHORT)
         curToast?.show()
+
+        val selected = LocalDateTime.ofInstant(selectedDate?.toInstant(), ZoneId.systemDefault())
+            .atZone(ZoneId.systemDefault())
+        val bundle = Bundle()
+        bundle.putString("selectedDate", selected.toString())
+
+        val selectedDayFragment = CurrentDayFragment()
+        selectedDayFragment.arguments = bundle
+
+        navigationPresenter.addFragment(selectedDayFragment)
     }
 
     override fun onNavigationButtonClicked(

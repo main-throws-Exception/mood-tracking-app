@@ -37,12 +37,12 @@ class MoodLineChartFragment : Fragment() {
         )
 
         val colors = listOf(
-            ContextCompat.getColor(view.context, R.color.light_grey),
-            ContextCompat.getColor(view.context, R.color.light_grey),
-            ContextCompat.getColor(view.context, R.color.very_light_red),
-            ContextCompat.getColor(view.context, R.color.light_orange),
+            ContextCompat.getColor(view.context, R.color.neutral),
+            ContextCompat.getColor(view.context, R.color.neutral),
+            ContextCompat.getColor(view.context, R.color.terrible),
+            ContextCompat.getColor(view.context, R.color.bad),
             ContextCompat.getColor(view.context, R.color.light_green),
-            ContextCompat.getColor(view.context, R.color.light_yellow),
+            ContextCompat.getColor(view.context, R.color.good),
         )
 
         val lineDataSet = LineDataSet(moodList, "Mood").apply {

@@ -15,7 +15,6 @@ import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.LoggingInContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.LoggingInPresenter
 import com.mainthrowsexception.moodtrackingapp.ui.currentday.CurrentDayFragment
-import com.mainthrowsexception.moodtrackingapp.ui.settings.SettingsFragment
 
 class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickListener {
 
@@ -23,9 +22,6 @@ class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickLi
     private lateinit var emailText: EditText
     private lateinit var passwordText: EditText
     private lateinit var loginButton: AppCompatButton
-    private lateinit var bottomNavigationView: BottomNavigationView
-    private lateinit var bottomNavigationViewButton: AppCompatButton
-    private lateinit var navHostFragmentContainerView: FragmentContainerView
     private var loginFailedToast: Toast? = null
 
 
@@ -62,9 +58,6 @@ class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickLi
         emailText = rootView.findViewById(R.id.fragment_logging_in__email)
         passwordText = rootView.findViewById(R.id.fragment_logging_in__password)
         loginButton = rootView.findViewById(R.id.fragment_logging_in___logging_in_button)
-//        bottomNavigationView = requireActivity().findViewById(R.id.bottom_nav_view)
-//        bottomNavigationViewButton = requireActivity().findViewById(R.id.bottom_nav_view_button)
-//        navHostFragmentContainerView = requireActivity().findViewById(R.id.activity_main__nav_host_fragment)
 
         Log.i("LoggingIn", "Setting up the click listener")
         loginButton.setOnClickListener(this)
@@ -87,8 +80,8 @@ class LoggingInFragment : BaseFragment(), LoggingInContract.View, View.OnClickLi
         loginButton.isEnabled = true
         if (result) {
 //            navHostFragmentContainerView.setPadding(0, 0, 0, (resources.displayMetrics.density * 60 + 0.5f).toInt())
-//            bottomNavigationView.visibility = View.VISIBLE
-//            bottomNavigationViewButton.visibility = View.VISIBLE
+            Log.i("NavBarToggle", "Trying to display the nav bar")
+            navigationPresenter.displayNav()
 
             Toast.makeText(activity?.applicationContext, "Success", Toast.LENGTH_SHORT).show() // TEMPORARY MEASURE
           

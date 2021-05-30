@@ -1,6 +1,7 @@
 package com.mainthrowsexception.moodtrackingapp.ui.common.presenter
 
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
+import com.mainthrowsexception.moodtrackingapp.ui.common.base.BasePreferenceFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.MainActivityContract
 import com.mainthrowsexception.moodtrackingapp.ui.common.nav.FragmentNavigation
 import com.mainthrowsexception.moodtrackingapp.ui.login.LoginFragment
@@ -13,12 +14,24 @@ class MainActivityPresenter(view: MainActivityContract.View) : MainActivityContr
         view?.setFragment(fragment)
     }
 
+    override fun addFragment(fragment: BasePreferenceFragment) {
+        view?.setFragment(fragment)
+    }
+
     override fun startLoading() {
         view?.startLoading()
     }
 
     override fun stopLoading() {
         view?.stopLoading()
+    }
+
+    override fun displayNav() {
+        view?.displayNav()
+    }
+
+    override fun hideNav() {
+        view?.hideNav()
     }
 
     override fun setHomeFragment() {

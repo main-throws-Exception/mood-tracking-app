@@ -61,6 +61,6 @@
         tools:layout="@layout/fragment_calendar" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.mainthrowsexception.moodtrackingapp.ui.settings.SettingsFragment"
+        android:name="com.mainthrowsexception.moodtrackingapp.ui.settings.SettingsPreferenceFragment"
         android:label="SettingsFragment" />
 </navigation>

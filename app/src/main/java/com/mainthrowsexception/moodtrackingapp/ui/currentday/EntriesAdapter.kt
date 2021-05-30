@@ -21,9 +21,14 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.database.model.Entry
+import com.mainthrowsexception.moodtrackingapp.ui.common.nav.FragmentNavigation
+import com.mainthrowsexception.moodtrackingapp.ui.entry.EntryFragment
 import java.util.*
 
-class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Adapter<EntriesAdapter.EntryViewHolder>() {
+class EntriesAdapter(
+    private val entries: MutableList<Entry>,
+    private val navigationPresenter: FragmentNavigation.Presenter
+    ) : RecyclerView.Adapter<EntriesAdapter.EntryViewHolder>() {
 
     private val userId = FirebaseAuth.getInstance().currentUser!!.uid
     private val databaseRef = Firebase.database("https://goodmood-c69a1-default-rtdb.europe-west1.firebasedatabase.app/").reference
@@ -35,10 +40,16 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
 
     override fun onBindViewHolder(holder: EntryViewHolder, position: Int) {
         holder.bind(entries[position])
+        holder.setOnClickListener(this)
     }
 
     override fun getItemCount(): Int {
         return entries.size
+    }
+
+    fun showEntry(position: Int) {
+        val entry = entries[position]
+        navigationPresenter.addFragment(EntryFragment(entry))
     }
 
     inner class EntryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -51,6 +62,10 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
 
         init {
             btnEdit.setOnClickListener { showPopup(it) }
+        }
+
+        fun setOnClickListener(adapter: EntriesAdapter) {
+            layout.setOnClickListener { adapter.showEntry(adapterPosition) }
         }
 
         private fun showPopup(view: View) {
@@ -111,7 +126,7 @@ class EntriesAdapter(private val entries: MutableList<Entry>) : RecyclerView.Ada
             for (tag in entry.tags) {
                 val chip = Chip(itemView.context)
                 chip.text = tag
-                chip.setTextAppearanceResource(R.style.tag_text)
+                chip.setTextAppearanceResource(R.style.tag_tv)
                 chip.chipBackgroundColor =
                     ColorStateList.valueOf(ContextCompat.getColor(itemView.context, R.color.dark_grey))
                 cgTags.addView(chip)

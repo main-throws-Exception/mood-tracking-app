@@ -19,11 +19,16 @@
     <string name="notification_sending_title">Send notifications</string>
     <string name="notification_remove_title">Remove notifications</string>
     <string name="theme_title">Theme</string>
-
     <string name="color_scheme_title">Current color scheme</string>
     <string name="saved_color_presets_title">Saved color Schemes</string>
     <string name="color_presets_title">Presets</string>
     <string name="notifications_title">Notifications</string>
+
+    <string name="language_preference_key">language</string>
+    <string name="notifications_switch_preference_key">notifications</string>
+    <string name="notification_time_preference_key">notification_time</string>
+    <string name="notification_remove_preference_key">notification_remove</string>
+    <string name="log_out_preference_key">log_out</string>
 
     <string name="new_notification_button_text">Add new notification</string>
 
@@ -128,14 +133,22 @@
     <string name="bad_point">bad_point</string>
     <string name="neutral_point">neutral_point</string>
     <string name="good_point">good_point</string>
-    <string name="excellent">excellent</string>
     <string name="slider_thumb">slider_thumb</string>
     <string name="tick">tick</string>
 
     <string name="deletion_toast">Successfully deleted</string>
     <string name="get_entries_fail">Failed to get entries></string>
     <string name="no_entries">No entries for this day</string>
-
+    <string name="plus">+</string>
+    <string name="tag_already_exists">The tag already exists</string>
+    <string name="terrible">Terrible</string>
+    <string name="bad">Bad</string>
+    <string name="neutral">Neutral</string>
+    <string name="good">Good</string>
+    <string name="excellent">Excellent</string>
+    <string name="note">Note</string>
+    <string name="add_tag">Add tag</string>
+    <string name="selected_tags">Selected tags</string>
     <string name="mood">Mood</string>
     <string name="tags">Tags</string>
     <string name="terrible_mood">Terrible</string>
