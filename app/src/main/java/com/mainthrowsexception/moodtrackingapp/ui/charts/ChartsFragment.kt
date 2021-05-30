@@ -40,6 +40,7 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
     private lateinit var lineChart: LineChart
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        if (context == null) return
         super.onViewCreated(view, savedInstanceState)
 
         daysOfWeek = arrayOf(getString(R.string.monday), getString(R.string.tuesday),
@@ -131,6 +132,7 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
     }
 
     override fun onMoodsReady(moods: ArrayList<Float>) {
+        if (context == null) return
         Log.i("ChartsFragment", "onMoodReady called")
 
         moodList.clear()
@@ -231,6 +233,7 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
     }
 
     override fun onTagsReady(tagsMap: HashMap<String, Int>) {
+        if (context == null) return
         tagsList.clear()
 
 //        отсортировать мапу по значениям и оставить топ-5 (?)

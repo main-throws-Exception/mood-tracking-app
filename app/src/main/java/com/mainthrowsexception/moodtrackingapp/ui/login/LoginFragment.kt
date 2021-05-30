@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatButton
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
 import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.ui.calendar.CalendarFragment
 import com.mainthrowsexception.moodtrackingapp.ui.common.base.BaseFragment
@@ -40,11 +41,15 @@ class LoginFragment : BaseFragment(), LoginContract.View, View.OnClickListener {
         rootView.findViewById<AppCompatButton>(R.id.fragment_login__sign_up_button).setOnClickListener(this)
         rootView.findViewById<SignInButton>(R.id.fragment_login__google_sign_in_button).setOnClickListener(this)
 
-
         presenter = LoginPresenter(this)
+
     }
 
     override fun onClick(v: View?) {
+        if (FirebaseAuth.getInstance().uid != null) {
+            onGoogleSignInSuccess()
+            return
+        }
         when (v?.id) {
             R.id.fragment_login__login_button -> navigationPresenter.addFragment(LoggingInFragment())
             R.id.fragment_login__sign_up_button -> navigationPresenter.addFragment(SigningUpFragment())

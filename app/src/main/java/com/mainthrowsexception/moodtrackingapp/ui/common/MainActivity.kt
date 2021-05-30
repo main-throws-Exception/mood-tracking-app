@@ -10,6 +10,8 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.FragmentManager
 import androidx.preference.PreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.mainthrowsexception.moodtrackingapp.R
 import com.mainthrowsexception.moodtrackingapp.ui.calendar.CalendarFragment
 import com.mainthrowsexception.moodtrackingapp.ui.charts.ChartsFragment
@@ -22,6 +24,7 @@ import com.mainthrowsexception.moodtrackingapp.ui.entry.EntryFragment
 import com.mainthrowsexception.moodtrackingapp.ui.login.LoginFragment
 import com.mainthrowsexception.moodtrackingapp.ui.settings.SettingsPreferenceFragment
 import com.mainthrowsexception.moodtrackingapp.util.AppUtil
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity(), MainActivityContract.View {
 
@@ -50,7 +53,9 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
                     return@setOnNavigationItemSelectedListener true
                 }
             }
-            setFragment(selectedFragment)
+            if (FirebaseAuth.getInstance().uid != null) {
+                setFragment(selectedFragment)
+            }
             true
         }
         bottomNavigationViewButton.setOnClickListener {
@@ -60,6 +65,12 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
         loading = findViewById(R.id.loading_panel)
 
         presenter = MainActivityPresenter(this)
+
+        if (FirebaseAuth.getInstance().uid != null) {
+            bottomNavigationView.selectedItemId = R.id.currentDayFragment
+            presenter.displayNav()
+            return
+        }
 
         val homeFragment = LoginFragment()
 
@@ -132,10 +143,12 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
     override fun onBackPressed() {
         super.onBackPressed()
 
-        if (supportFragmentManager.backStackEntryCount > 0) {
+        if (supportFragmentManager.backStackEntryCount > 0 && FirebaseAuth.getInstance().uid != null) {
             bottomNavigationView.selectedItemId = getFragmentIdFromName(supportFragmentManager.getBackStackEntryAt(supportFragmentManager.backStackEntryCount - 1).name.toString())
         } else {
-            bottomNavigationView.selectedItemId = R.id.currentDayFragment
+            if (FirebaseAuth.getInstance().uid != null) {
+                bottomNavigationView.selectedItemId = R.id.currentDayFragment
+            }
         }
     }
 

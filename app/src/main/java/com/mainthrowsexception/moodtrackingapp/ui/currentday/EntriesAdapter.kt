@@ -132,7 +132,7 @@ class EntriesAdapter(
                 cgTags.addView(chip)
             }
 
-            tvCreationTime.text = android.text.format.DateFormat.format("hh:mm", Date(entry.created))
+            tvCreationTime.text = android.text.format.DateFormat.format("HH:mm", Date(entry.created))
         }
     }
 }
