@@ -1,5 +1,6 @@
 package com.mainthrowsexception.moodtrackingapp.ui.common.presenter
 
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -9,7 +10,9 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.mainthrowsexception.moodtrackingapp.database.model.Entry
 import com.mainthrowsexception.moodtrackingapp.ui.common.contract.ChartsContract
-import java.time.LocalDateTime
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
+import kotlin.math.floor
 
 class ChartsPresenter(private val view: ChartsContract.View) : ChartsContract.Presenter {
 
@@ -30,6 +33,7 @@ class ChartsPresenter(private val view: ChartsContract.View) : ChartsContract.Pr
                 }
 
                 prepareMoods(entriesList)
+                prepareMoodLine(entriesList)
                 prepareTags(entriesList)
             }
 
@@ -45,6 +49,31 @@ class ChartsPresenter(private val view: ChartsContract.View) : ChartsContract.Pr
             .startAt(weekAgo.toDouble())
 
         currentQuery.addValueEventListener(currentValueEventListener)
+    }
+
+    override fun prepareMoodLine(entriesList: ArrayList<Entry>) {
+        val moodByDay = FloatArray(7)
+        val moodsInDay = IntArray(7)
+
+        for (entry in entriesList) {
+            val createdSinceLastWeek = entry.created - (System.currentTimeMillis() - 604_800_000)
+            val dayOfWeek = floor(createdSinceLastWeek / 86_400_000f).toInt()
+            Log.i("ChartsPrepareMoodLine", "Entry " + entry.uid + " created " + entry.created + " since last week " + createdSinceLastWeek + " day of week " + dayOfWeek)
+            moodByDay[dayOfWeek] = moodByDay[dayOfWeek] + entry.mood
+            moodsInDay[dayOfWeek] = moodsInDay[dayOfWeek] + 1
+        }
+
+        val moodLines = ArrayList<com.github.mikephil.charting.data.Entry>()
+
+        for (i in 0..6) {
+            if (moodsInDay[i] == 0) {
+                moodLines.add(com.github.mikephil.charting.data.Entry(i.toFloat(), 0f))
+            } else {
+                moodLines.add(com.github.mikephil.charting.data.Entry(i.toFloat(), moodByDay[i] / moodsInDay[i]))
+            }
+        }
+
+        view.onMoodLineReady(moodLines)
     }
 
     override fun prepareMoods(entriesList: ArrayList<Entry>) {

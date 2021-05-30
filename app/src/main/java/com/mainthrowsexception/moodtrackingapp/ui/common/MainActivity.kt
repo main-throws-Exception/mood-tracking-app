@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
                 R.id.currentDayFragment -> selectedFragment = CurrentDayFragment()
                 R.id.calendarFragment -> selectedFragment = CalendarFragment()
                 R.id.entryFragment -> selectedFragment = EntryFragment()
+                R.id.chartsFragment -> selectedFragment = ChartsFragment()
                 R.id.settingsFragment -> {
                     setFragment(SettingsPreferenceFragment())
                     return@setOnNavigationItemSelectedListener true
