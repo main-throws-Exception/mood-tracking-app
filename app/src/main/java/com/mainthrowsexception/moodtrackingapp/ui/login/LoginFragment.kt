@@ -42,8 +42,6 @@ class LoginFragment : BaseFragment(), LoginContract.View, View.OnClickListener {
 
 
         presenter = LoginPresenter(this)
-
-//        navigationPresenter.stopLoading()
     }
 
     override fun onClick(v: View?) {

@@ -58,6 +58,7 @@ class SettingsPreferenceFragment : BasePreferenceFragment(), SettingsContract.Vi
     }
 
     override fun onLogout() {
+        navigationPresenter.hideNav()
         navigationPresenter.addFragment(LoginFragment())
     }
 
