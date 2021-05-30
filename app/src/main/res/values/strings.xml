@@ -149,4 +149,14 @@
     <string name="note">Note</string>
     <string name="add_tag">Add tag</string>
     <string name="selected_tags">Selected tags</string>
+    <string name="mood">Mood</string>
+    <string name="tags">Tags</string>
+    <string name="terrible_mood">Terrible</string>
+    <string name="bad_mood">Bad</string>
+    <string name="neutral_mood">Neutral</string>
+    <string name="good_mood">Good</string>
+    <string name="perfect_mood">Perfect</string>
+
+    <string name="mood_pie_chart_title">Mood in the last week</string>
+    <string name="tags_pie_chart_title">Most popular tags in the last week</string>
 </resources>

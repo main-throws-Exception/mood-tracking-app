@@ -26,4 +26,10 @@
         <item name="android:layout_height">67dp</item>
         <item name="android:layout_margin">4dp</item>
     </style>
+    <style name="chart_title">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 </resources>
