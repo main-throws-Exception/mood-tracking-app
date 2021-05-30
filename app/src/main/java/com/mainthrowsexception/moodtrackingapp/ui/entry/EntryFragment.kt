@@ -266,6 +266,7 @@ class EntryFragment() : BaseFragment(), EntryContract.View, View.OnClickListener
     }
 
     fun updateMoodState(mood: Int, color: Int) {
+        if (context == null) return
         ivEmoji.setImageResource(getEmojiResByMood(mood))
         tvState.text = getString(getStateResByMood(mood))
 
@@ -275,6 +276,7 @@ class EntryFragment() : BaseFragment(), EntryContract.View, View.OnClickListener
     }
 
     private fun colorResToColor(colorRes: Int): Int {
+        if (context == null) return 0
         return ContextCompat.getColor(requireContext(), colorRes)
     }
 

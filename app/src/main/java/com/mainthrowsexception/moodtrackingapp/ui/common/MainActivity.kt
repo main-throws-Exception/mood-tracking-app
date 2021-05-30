@@ -110,6 +110,12 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
             doStartLoading = false
         }
 
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            if (supportFragmentManager.getBackStackEntryAt(supportFragmentManager.backStackEntryCount - 1).name.toString() == "EntryFragment") {
+                supportFragmentManager.popBackStackImmediate("CurrentDayFragment", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            }
+        }
+
         supportFragmentManager.popBackStackImmediate(fragment::class.simpleName, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
         fragment.attachPresenter(presenter)
@@ -128,6 +134,8 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
 
         if (supportFragmentManager.backStackEntryCount > 0) {
             bottomNavigationView.selectedItemId = getFragmentIdFromName(supportFragmentManager.getBackStackEntryAt(supportFragmentManager.backStackEntryCount - 1).name.toString())
+        } else {
+            bottomNavigationView.selectedItemId = R.id.currentDayFragment
         }
     }
 

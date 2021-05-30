@@ -159,6 +159,7 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
     }
 
     private fun getMoodString(num: Int): String {
+        if (context == null) return ""
         return when (num) {
             0 -> getString(R.string.terrible_mood)
             1 -> getString(R.string.bad_mood)
@@ -170,6 +171,7 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
     }
 
     private fun getColor(num: Int): Int {
+        if (context == null) return 0
         return when (num) {
             0 -> ContextCompat.getColor(requireView().context, R.color.very_bad_mood)
             1 -> ContextCompat.getColor(requireView().context, R.color.bad_mood)
