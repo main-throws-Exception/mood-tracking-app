@@ -9,6 +9,16 @@
     android:orientation="vertical"
     >
 
+    <Toolbar
+        android:id="@+id/fragment_current_day__toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/blue"
+        app:layout_constraintTop_toTopOf="parent"
+        android:logo="@drawable/ic_create_entry_toolbar"
+        android:titleTextAppearance="@style/toolbar"
+        android:title="@string/entry" />
+
     <include
         android:id="@+id/fragment_entry__mood_state_cl"
         layout="@layout/mood_state"

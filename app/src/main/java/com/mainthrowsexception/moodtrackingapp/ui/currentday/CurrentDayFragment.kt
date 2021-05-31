@@ -76,7 +76,8 @@ class CurrentDayFragment : BaseFragment(), CurrentDayContract.View {
 
     override fun onEntriesRead(entries: ArrayList<Entry>) {
         if (entries.size == 0) {
-            Toast.makeText(activity?.applicationContext, R.string.no_entries, Toast.LENGTH_SHORT).show()
+            // Здесь крашится иногда почему-то... (Когда этот фрагмент грузится первым у залогиненного пользователя)
+//            Toast.makeText(activity?.applicationContext, R.string.no_entries, Toast.LENGTH_SHORT).show()
         }
         rvEntries?.adapter = EntriesAdapter(entries, navigationPresenter)
     }
