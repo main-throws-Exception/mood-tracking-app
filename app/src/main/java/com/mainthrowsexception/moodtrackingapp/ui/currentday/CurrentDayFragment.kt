@@ -16,6 +16,8 @@ import com.mainthrowsexception.moodtrackingapp.ui.common.contract.CurrentDayCont
 import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.CurrentDayPresenter
 import java.time.ZoneId
 import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.util.*
 
 
@@ -29,6 +31,8 @@ class CurrentDayFragment : BaseFragment(), CurrentDayContract.View {
     private var forwardArrow: ImageView? = null
     private var selectedDay: TextView? = null
 
+    private var localCurrentDay: String? = null
+
     private var currentDay = ZonedDateTime.now(ZoneId.systemDefault())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,7 +44,11 @@ class CurrentDayFragment : BaseFragment(), CurrentDayContract.View {
         forwardArrow = view.findViewById(R.id.fragment_current_day__forward_arrow)
 
         selectedDay = view.findViewById(R.id.fragment_current_day__selected_day)
-        selectedDay!!.text = currentDay.dayOfMonth.toString() + " " + currentDay.month.toString()
+        localCurrentDay = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+            .withLocale(Locale("ru"))
+            .format(currentDay);
+//        selectedDay!!.text = currentDay.dayOfMonth.toString() + " " + currentDay.month.toString()
+        selectedDay!!.text = localCurrentDay
 
         rvEntries = view.findViewById(R.id.fragment_current_day__rv_entries)
         rvEntries!!.layoutManager = LinearLayoutManager(view.context)
@@ -53,7 +61,12 @@ class CurrentDayFragment : BaseFragment(), CurrentDayContract.View {
             currentDay = ZonedDateTime.parse(receivedParam)
         }
 
-        selectedDay!!.text = currentDay.dayOfMonth.toString() + " " + currentDay.month.toString()
+        localCurrentDay = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+            .withLocale(getResources().getConfiguration().locale)
+            .format(currentDay);
+
+//        selectedDay!!.text = currentDay.dayOfMonth.toString() + " " + currentDay.month.toString()
+        selectedDay!!.text = localCurrentDay
 
         presenter.getEntries(currentDay)
 
@@ -89,7 +102,11 @@ class CurrentDayFragment : BaseFragment(), CurrentDayContract.View {
         } else {
             currentDay = currentDay.plusDays(1)
         }
-        selectedDay!!.text = currentDay.dayOfMonth.toString() + " " + currentDay.month.toString()
+        localCurrentDay = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+            .withLocale(getResources().getConfiguration().locale)
+            .format(currentDay);
+//        selectedDay!!.text = currentDay.dayOfMonth.toString() + " " + currentDay.month.toString()
+        selectedDay!!.text = localCurrentDay
         presenter.getEntries(currentDay)
     }
 }
