@@ -6,6 +6,7 @@
     <string name="app_logo_description">Логотип приложения</string>
     <string name="today">Сегодня</string>
     <string name="calendar">Календарь</string>
+    <string name="entry">Новая запись</string>
     <string name="charts">Графики</string>
     <string name="settings">Настройки</string>
     <string name="general_header">Общие</string>

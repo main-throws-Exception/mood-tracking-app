@@ -232,7 +232,7 @@ class EntryFragment() : BaseFragment(), EntryContract.View, View.OnClickListener
     private fun bindMoodStateSection() {
         val color = colorResToColor(getColorResByMood(entry.mood))
         updateMoodState(entry.mood, color)
-        tvTime.text = SimpleDateFormat("hh:mm").format(entry.created)
+        tvTime.text = SimpleDateFormat("HH:mm").format(entry.created)
     }
 
     private fun getColorResByMood(mood: Int): Int {
