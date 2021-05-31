@@ -1,84 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.charts.ChartsFragment"
-    android:layout_marginBottom="60dp">
+    tools:context=".ui.charts.ChartsFragment">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <Toolbar
             android:id="@+id/fragment_current_day__toolbar"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:background="@color/blue"
+            app:layout_constraintTop_toTopOf="parent"
             android:logo="@drawable/ic_charts_toolbar"
             android:titleTextAppearance="@style/toolbar"
             android:title="@string/charts" />
 
-        <TextView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            style="@style/chart_title"
-            android:text="@string/mood_pie_chart_title"/>
+            app:layout_constraintTop_toBottomOf="@id/fragment_current_day__toolbar">
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/chart__mood_pie1"
-            android:layout_width="match_parent"
-            android:layout_height="450dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/chart__mood_line"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    style="@style/chart_title"
+                    android:text="@string/mood_pie_chart_title"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            style="@style/chart_title"
-            android:text="@string/tags_pie_chart_title"/>
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/chart__mood_pie1"
+                    android:layout_width="match_parent"
+                    android:layout_height="450dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp" />
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/chart__tags_pie1"
-            android:layout_width="match_parent"
-            android:layout_height="450dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp" />
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart__mood_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp" />
 
-<!--        <androidx.fragment.app.FragmentContainerView-->
-<!--            android:id="@+id/fMoodPieChart"-->
-<!--            android:name="com.mainthrowsexception.moodtrackingapp.ui.charts.MoodPieChartFragment"-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    style="@style/chart_title"
+                    android:text="@string/tags_pie_chart_title"/>
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/chart__tags_pie1"
+                    android:layout_width="match_parent"
+                    android:layout_height="450dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".ui.charts.ChartsFragment"-->
+<!--    android:layout_marginBottom="60dp">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <Toolbar-->
+<!--            android:id="@+id/fragment_current_day__toolbar"-->
 <!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="500dp" />-->
+<!--            android:layout_height="65dp"-->
+<!--            android:background="@color/blue"-->
+<!--            android:logo="@drawable/ic_charts_toolbar"-->
+<!--            android:titleTextAppearance="@style/toolbar"-->
+<!--            android:title="@string/charts" />-->
 
-<!--        <androidx.fragment.app.FragmentContainerView-->
-<!--            android:id="@+id/fMoodLineChart"-->
-<!--            android:name="com.mainthrowsexception.moodtrackingapp.ui.charts.MoodLineChartFragment"-->
+<!--        <TextView-->
 <!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="500dp" />-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            style="@style/chart_title"-->
+<!--            android:text="@string/mood_pie_chart_title"/>-->
 
-<!--        <androidx.fragment.app.FragmentContainerView-->
-<!--            android:id="@+id/fTagsPieChart"-->
-<!--            android:name="com.mainthrowsexception.moodtrackingapp.ui.charts.TagsPieChartFragment"-->
+<!--        <com.github.mikephil.charting.charts.PieChart-->
+<!--            android:id="@+id/chart__mood_pie1"-->
 <!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="500dp" />-->
+<!--            android:layout_height="450dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginEnd="20dp" />-->
+
+<!--        <com.github.mikephil.charting.charts.LineChart-->
+<!--            android:id="@+id/chart__mood_line"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="500dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginEnd="20dp"-->
+<!--            />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            style="@style/chart_title"-->
+<!--            android:text="@string/tags_pie_chart_title"/>-->
+
+<!--        <com.github.mikephil.charting.charts.PieChart-->
+<!--            android:id="@+id/chart__tags_pie1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="450dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginEnd="20dp" />-->
+
+<!--&lt;!&ndash;        <androidx.fragment.app.FragmentContainerView&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/fMoodPieChart"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:name="com.mainthrowsexception.moodtrackingapp.ui.charts.MoodPieChartFragment"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="500dp" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <androidx.fragment.app.FragmentContainerView&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/fMoodLineChart"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:name="com.mainthrowsexception.moodtrackingapp.ui.charts.MoodLineChartFragment"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="500dp" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <androidx.fragment.app.FragmentContainerView&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/fTagsPieChart"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:name="com.mainthrowsexception.moodtrackingapp.ui.charts.TagsPieChartFragment"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="500dp" />&ndash;&gt;-->
 
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 
-</androidx.core.widget.NestedScrollView>
+<!--</androidx.core.widget.NestedScrollView>-->
+
+
+
+

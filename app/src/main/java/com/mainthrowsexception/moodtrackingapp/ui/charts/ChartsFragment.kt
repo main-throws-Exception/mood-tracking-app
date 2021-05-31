@@ -1,7 +1,11 @@
 package com.mainthrowsexception.moodtrackingapp.ui.charts
 
+import android.content.ContentResolver
+import android.content.Context
+import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.Settings.Global.getString
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -71,7 +75,7 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
             ContextCompat.getColor(view.context, R.color.yellow),
         )
 
-        val lineDataSet = LineDataSet(moodList, "Mood").apply {
+        val lineDataSet = LineDataSet(moodList, getString(R.string.mood)).apply {
             this.colors = colors
             setDrawValues(false)
             setDrawCircles(true)
@@ -90,14 +94,14 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
 
         lineChart.xAxis.apply {
             valueFormatter =
-                AxisFormatter(AxisFormatter.AxisFlag.X, daysOfWeek)
+                AxisFormatter(requireContext(), AxisFormatter.AxisFlag.X, daysOfWeek)
             position = XAxis.XAxisPosition.BOTTOM
             spaceMin = 0.3f
         }
 
         lineChart.axisLeft.apply {
             valueFormatter =
-                AxisFormatter(AxisFormatter.AxisFlag.Y, daysOfWeek)
+                AxisFormatter(requireContext(), AxisFormatter.AxisFlag.Y, daysOfWeek)
             setDrawGridLines(false)
             granularity = 1f
             axisMinimum = 0f
@@ -189,7 +193,7 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
 
         moodLineList.clear()
 
-        val lineDataSet = LineDataSet(moodLines, "Mood").apply {
+        val lineDataSet = LineDataSet(moodLines, getString(R.string.mood)).apply {
             this.colors = colors
             setDrawValues(false)
             setDrawCircles(true)
@@ -208,14 +212,14 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
 
         lineChart.xAxis.apply {
             valueFormatter =
-                AxisFormatter(AxisFormatter.AxisFlag.X, daysOfWeek)
+                AxisFormatter(requireContext(), AxisFormatter.AxisFlag.X, daysOfWeek)
             position = XAxis.XAxisPosition.BOTTOM
             spaceMin = 0.3f
         }
 
         lineChart.axisLeft.apply {
             valueFormatter =
-                AxisFormatter(AxisFormatter.AxisFlag.Y, daysOfWeek)
+                AxisFormatter(requireContext(), AxisFormatter.AxisFlag.Y, daysOfWeek)
             setDrawGridLines(false)
             granularity = 1f
             axisMinimum = 0f
@@ -258,8 +262,9 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
         navigationPresenter.stopLoading()
     }
 
-    private class AxisFormatter(_axisFlag: AxisFlag, private val daysOfWeek: Array<String>) : ValueFormatter() {
+    private class AxisFormatter(_context: Context, _axisFlag: AxisFlag, private val daysOfWeek: Array<String>) : ValueFormatter() {
 
+        private val context = _context
         private val axisFlag = _axisFlag
 
         enum class AxisFlag {
@@ -279,11 +284,11 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
 
         private fun getYAxisLabel(value: Float): String {
             return when (value) {
-                0f -> "Terrible"
-                1f -> "Bad"
-                2f -> "Neutral"
-                3f -> "Good"
-                4f -> "Excellent"
+                0f -> context.getString(R.string.terrible_mood)
+                1f -> context.getString(R.string.bad_mood)
+                2f -> context.getString(R.string.neutral_mood)
+                3f -> context.getString(R.string.good_mood)
+                4f -> context.getString(R.string.perfect_mood)
                 else -> ""
             }
         }
