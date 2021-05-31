@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.calendar.CalendarFragment">
 
+    <Toolbar
+        android:id="@+id/fragment_calendar__toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/blue"
+        android:logo="@drawable/ic_calendar_toolbar"
+        android:titleTextAppearance="@style/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:title="@string/calendar" />
+
     <org.naishadhparmar.zcustomcalendar.CustomCalendar
         android:id="@+id/fragment_calendar__calendar"
         android:layout_width="match_parent"
@@ -16,9 +26,7 @@
         app:row_height="75dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.15"/>
+        app:layout_constraintTop_toBottomOf="@id/fragment_calendar__toolbar"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
