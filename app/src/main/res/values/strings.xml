@@ -167,4 +167,5 @@
 
     <string name="mood_pie_chart_title">Mood in the last week</string>
     <string name="tags_pie_chart_title">Most popular tags in the last week</string>
+    <string name="tag_name_too_long">The tag name is too long</string>
 </resources>
