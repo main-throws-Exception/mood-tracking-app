@@ -1,5 +1,6 @@
 package com.mainthrowsexception.moodtrackingapp.ui.entry
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +51,7 @@ class EntryTagsAdapter(
     private var activatedDeleteBtnHolder: TagViewHolder? = null
 
     private fun onClickTag(holder: TagViewHolder) {
+        Log.d("EntryTagsAdapter", "Click on tag")
         activatedDeleteBtnHolder?.let {
             activatedDeleteBtnHolder!!.hideDeleteBtn()
             if (activatedDeleteBtnHolder!!.adapterPosition == holder.adapterPosition) {

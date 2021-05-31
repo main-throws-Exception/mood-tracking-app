@@ -4,6 +4,7 @@ import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.AppCompatButton
@@ -113,15 +114,21 @@ class EntryFragment() : BaseFragment(), EntryContract.View, View.OnClickListener
     }
 
     private fun saveChanges() {
+        Log.d("EntryFragment", "Click on save button")
         saveData()
         showCurrentDay()
     }
 
     private fun addTagToSelectedSection() {
+        Log.d("EntryFragment", "Click on add tag button")
         val adapter = (rvTags.adapter as EntryTagsAdapter)
         val newTagName = etAddingTag.text.toString()
         if (newTagName.isEmpty()) {
             hideAddingTagSection()
+            return
+        }
+        if (newTagName.length > MAX_TAG_NAME_LENGTH) {
+            Toast.makeText(requireContext(), R.string.tag_name_too_long, Toast.LENGTH_SHORT).show()
             return
         }
         val tags = adapter.getTagNames()
@@ -208,6 +215,7 @@ class EntryFragment() : BaseFragment(), EntryContract.View, View.OnClickListener
     }
 
     private fun hideAddingTagSection() {
+        Log.d("EntryTagsAdapter", "Click on hide adding tag section")
         llAddingTagTitle.visibility = View.GONE
         etAddingTag.visibility = View.GONE
         ivAddingTagBtnBg.visibility = View.GONE
@@ -215,6 +223,7 @@ class EntryFragment() : BaseFragment(), EntryContract.View, View.OnClickListener
     }
 
     fun showAddingTagSection() {
+        Log.d("EntryTagsAdapter", "Click on show adding tag section")
         llAddingTagTitle.visibility = View.VISIBLE
         etAddingTag.visibility = View.VISIBLE
         ivAddingTagBtnBg.visibility = View.VISIBLE
@@ -292,4 +301,8 @@ class EntryFragment() : BaseFragment(), EntryContract.View, View.OnClickListener
     class GradientBackground(startColor: Int, endColor: Int) : GradientDrawable(
         Orientation.LEFT_RIGHT, intArrayOf(startColor, endColor)
     )
+
+    companion object {
+        const val MAX_TAG_NAME_LENGTH = 15
+    }
 }
