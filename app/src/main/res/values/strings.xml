@@ -27,7 +27,7 @@
 
     <string name="language_preference_key">language</string>
     <string name="notifications_switch_preference_key">notifications</string>
-    <string name="notification_time_preference_key">notification_time</string>
+    <string name="notification_time_preference_key">notifications_time</string>
     <string name="notification_remove_preference_key">notification_remove</string>
     <string name="log_out_preference_key">log_out</string>
 
@@ -168,4 +168,16 @@
     <string name="mood_pie_chart_title">Mood in the last week</string>
     <string name="tags_pie_chart_title">Most popular tags in the last week</string>
     <string name="tag_name_too_long">The tag name is too long</string>
+    <string name="notification_time_title">Notifications\' time</string>
+    <string name="log_out_title">Log out</string>
+    <string name="confirm">Set</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="color_settings_title">Change colors</string>
+    <string name="very_bad_color_title">Very bad mood</string>
+    <string name="bad_color_title">Bad mood</string>
+    <string name="neutral_color_title">Neutral mood</string>
+    <string name="good_color_title">Good mood</string>
+    <string name="very_good_color_title">Very good mood</string>
+    <string name="color_settings_key">color</string>
 </resources>

@@ -1,10 +1,10 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:title="@string/general_header">
-
+        <!--
         <ListPreference
             app:defaultValue="en"
             app:entries="@array/language_entries"
@@ -13,7 +13,7 @@
             app:key="@string/language_preference_key"
             app:title="@string/language_title"
             app:useSimpleSummaryProvider="true" />
-
+        -->
         <SwitchPreferenceCompat
             app:iconSpaceReserved="false"
             app:key="highlight"
@@ -21,8 +21,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        app:layout="@layout/divider"/>
+    <PreferenceCategory app:layout="@layout/divider" />
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
@@ -33,32 +32,37 @@
             app:key="@string/notifications_switch_preference_key"
             app:title="@string/notification_sending_title" />
 
+        <com.mainthrowsexception.moodtrackingapp.ui.settings.TimepickerPreference
+            app:iconSpaceReserved="false"
+            app:isPreferenceVisible="false"
+            app:key="@string/notification_time_preference_key"
+            app:title="@string/notification_time_title" />
+        <!--
         <Preference
             app:iconSpaceReserved="false"
             app:key="@string/notification_time_preference_key"
             app:title="Choose notifications' time"
             app:isPreferenceVisible="false" />
-
+        -->
 
         <ListPreference
             app:defaultValue="never"
             app:entries="@array/notifications_remove_entries"
             app:entryValues="@array/notifications_remove_values"
             app:iconSpaceReserved="false"
+            app:isPreferenceVisible="false"
             app:key="@string/notification_remove_preference_key"
             app:title="@string/notification_remove_title"
-            app:useSimpleSummaryProvider="true"
-            app:isPreferenceVisible="false" />
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        app:layout="@layout/divider"/>
+    <PreferenceCategory app:layout="@layout/divider" />
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:title="@string/appearance_header">
-
+        <!--
         <ListPreference
             app:defaultValue="light"
             app:entries="@array/theme_entries"
@@ -67,28 +71,37 @@
             app:key="theme"
             app:title="@string/theme_title"
             app:useSimpleSummaryProvider="true" />
+        -->
 
+
+        <Preference
+            app:fragment="com.mainthrowsexception.moodtrackingapp.ui.settings.ColorSettingsPreferenceFragment"
+            android:widgetLayout="@layout/behavior_group"
+            app:iconSpaceReserved="false"
+            app:key="@string/color_settings_key"
+            app:title="@string/color_settings_title"/>
+        <!--
         <Preference
             android:widgetLayout="@layout/behavior_group"
             app:iconSpaceReserved="false"
             app:key="color"
             app:title="Change colors" />
-
+            -->
+        <!--
         <Preference
             android:widgetLayout="@layout/behavior_group"
             app:iconSpaceReserved="false"
             app:key="emoji"
             app:title="Change emojis" />
-
+        -->
     </PreferenceCategory>
 
-    <PreferenceCategory
-        app:layout="@layout/divider"/>
+    <PreferenceCategory app:layout="@layout/divider" />
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:title="@string/data_header">
-
+        <!--
         <Preference
             app:iconSpaceReserved="false"
             app:key="restore"
@@ -98,11 +111,11 @@
             app:iconSpaceReserved="false"
             app:key="export"
             app:title="Export data" />
-
+        -->
         <Preference
             app:iconSpaceReserved="false"
             app:key="@string/log_out_preference_key"
-            app:title="Log out" />
+            app:title="@string/log_out_title" />
 
     </PreferenceCategory>
 

@@ -18,7 +18,7 @@
     <string name="language_title">Язык</string>
     <string name="highlight_title">Выделять дни с заметками</string>
     <string name="notification_sending_title">Отправка уведомлений</string>
-    <string name="notification_remove_title">Отлючить уведомления</string>
+    <string name="notification_remove_title">Удалять уведомления</string>
     <string name="theme_title">Тема</string>
     <string name="color_scheme_title">Current color scheme</string>
     <string name="saved_color_presets_title">Saved color Schemes</string>
@@ -27,7 +27,7 @@
 
     <string name="language_preference_key">language</string>
     <string name="notifications_switch_preference_key">notifications</string>
-    <string name="notification_time_preference_key">notification_time</string>
+    <string name="notification_time_preference_key">notifications_time</string>
     <string name="notification_remove_preference_key">notification_remove</string>
     <string name="log_out_preference_key">log_out</string>
 
@@ -167,4 +167,15 @@
 
     <string name="mood_pie_chart_title">Настроение за последнюю неделю</string>
     <string name="tags_pie_chart_title">Наиболее популярные тэги за последнюю неделю</string>
+    <string name="notification_time_title">Время уведомлений</string>
+    <string name="log_out_title">Выйти</string>
+    <string name="confirm">Выбрать</string>
+    <string name="cancel">Отмена</string>
+    <string name="color_settings_title">Изменить цвета</string>
+    <string name="very_bad_color_title">Очень плохое настроение</string>
+    <string name="bad_color_title">Плохое настроение</string>
+    <string name="neutral_color_title">Нейтральное настроение</string>
+    <string name="good_color_title">Хорошее настроение</string>
+    <string name="very_good_color_title">Очень хорошее настроение</string>
+    <string name="color_settings_key">color</string>
 </resources>

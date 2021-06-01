@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="Mood colors">
+
+        <com.skydoves.colorpickerpreference.ColorPickerPreference
+            android:key="very_good_color_preference_key"
+            android:title="@string/very_good_color_title"
+            app:preference_dialog_title="Toolbar ColorPickerDialog"
+            app:preference_dialog_positive="@string/confirm"
+            app:preference_dialog_negative="@string/cancel"
+            app:preference_palette="@drawable/palette"
+            app:preference_selector="@drawable/wheel"
+            app:default_color="@color/very_good_mood"
+            app:iconSpaceReserved="false"/>
+
+        <com.skydoves.colorpickerpreference.ColorPickerPreference
+            android:key="good_color_preference_key"
+            android:title="@string/good_color_title"
+            app:preference_dialog_title="Toolbar ColorPickerDialog"
+            app:preference_dialog_positive="@string/confirm"
+            app:preference_dialog_negative="@string/cancel"
+            app:preference_palette="@drawable/palette"
+            app:preference_selector="@drawable/wheel"
+            app:default_color="@color/good_mood"
+            app:iconSpaceReserved="false"/>
+
+        <com.skydoves.colorpickerpreference.ColorPickerPreference
+            android:key="neutral_color_preference_key"
+            android:title="@string/neutral_color_title"
+            app:preference_dialog_title="Toolbar ColorPickerDialog"
+            app:preference_dialog_positive="@string/confirm"
+            app:preference_dialog_negative="@string/cancel"
+            app:preference_palette="@drawable/palette"
+            app:preference_selector="@drawable/wheel"
+            app:default_color="@color/neutral_mood"
+            app:iconSpaceReserved="false"/>
+
+        <com.skydoves.colorpickerpreference.ColorPickerPreference
+            android:key="bad_color_preference_key"
+            android:title="@string/bad_color_title"
+            app:preference_dialog_title="Toolbar ColorPickerDialog"
+            app:preference_dialog_positive="@string/confirm"
+            app:preference_dialog_negative="@string/cancel"
+            app:preference_palette="@drawable/palette"
+            app:preference_selector="@drawable/wheel"
+            app:default_color="@color/bad_mood"
+            app:iconSpaceReserved="false"/>
+
+        <com.skydoves.colorpickerpreference.ColorPickerPreference
+            android:key="very_bad_color_preference_key"
+            android:title="@string/very_bad_color_title"
+            app:preference_dialog_title="Toolbar ColorPickerDialog"
+            app:preference_dialog_positive="@string/confirm"
+            app:preference_dialog_negative="@string/cancel"
+            app:preference_palette="@drawable/palette"
+            app:preference_selector="@drawable/wheel"
+            app:default_color="@color/very_bad_mood"
+            app:iconSpaceReserved="false"/>
+    </PreferenceCategory>
+</PreferenceScreen>

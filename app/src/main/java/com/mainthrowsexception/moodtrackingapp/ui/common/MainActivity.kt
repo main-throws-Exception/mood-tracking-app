@@ -22,6 +22,7 @@ import com.mainthrowsexception.moodtrackingapp.ui.common.presenter.MainActivityP
 import com.mainthrowsexception.moodtrackingapp.ui.currentday.CurrentDayFragment
 import com.mainthrowsexception.moodtrackingapp.ui.entry.EntryFragment
 import com.mainthrowsexception.moodtrackingapp.ui.login.LoginFragment
+import com.mainthrowsexception.moodtrackingapp.ui.settings.SettingsFragment
 import com.mainthrowsexception.moodtrackingapp.ui.settings.SettingsPreferenceFragment
 import com.mainthrowsexception.moodtrackingapp.util.AppUtil
 import kotlin.system.exitProcess
@@ -48,10 +49,7 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
                 R.id.calendarFragment -> selectedFragment = CalendarFragment()
                 R.id.entryFragment -> selectedFragment = EntryFragment()
                 R.id.chartsFragment -> selectedFragment = ChartsFragment()
-                R.id.settingsFragment -> {
-                    setFragment(SettingsPreferenceFragment())
-                    return@setOnNavigationItemSelectedListener true
-                }
+                R.id.settingsFragment -> selectedFragment = SettingsFragment()
             }
             if (FirebaseAuth.getInstance().uid != null) {
                 setFragment(selectedFragment)
@@ -103,11 +101,11 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
 //            }
     }
 
-    override fun attachBaseContext(newBase: Context?) {
-        val language = PreferenceManager.getDefaultSharedPreferences(newBase).getString("language", "")!!
-        val context = AppUtil.changeLang(newBase, language)
-        super.attachBaseContext(context)
-    }
+//    override fun attachBaseContext(newBase: Context?) {
+//        val language = PreferenceManager.getDefaultSharedPreferences(newBase).getString("language", "")!!
+//        val context = AppUtil.changeLang(newBase, language)
+//        super.attachBaseContext(context)
+//    }
 
     override fun setFragment(fragment: BaseFragment) {
         var doStartLoading = true

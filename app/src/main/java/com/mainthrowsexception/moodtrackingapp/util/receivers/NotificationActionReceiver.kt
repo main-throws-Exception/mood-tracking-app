@@ -5,6 +5,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import com.mainthrowsexception.moodtrackingapp.R
+import com.mainthrowsexception.moodtrackingapp.database.api.DbApi
+import com.mainthrowsexception.moodtrackingapp.database.model.Entry
 
 class NotificationActionReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -23,7 +25,9 @@ class NotificationActionReceiver: BroadcastReceiver() {
     }
 
     private fun createEntry(mood: Int) {
-        //TODO create new entry from notification
+        val entry = Entry()
+        entry.mood = mood
+        DbApi().createOrUpdateEntry(entry)
     }
 
 }
