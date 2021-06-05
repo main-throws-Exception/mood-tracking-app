@@ -75,10 +75,10 @@ class EntriesAdapter(
             popupMenu.inflate(R.menu.popup_menu)
             popupMenu.setOnMenuItemClickListener {
                 when(it.itemId) {
-                    R.id.popup__edit -> {
-                        Log.i("RECYCLER VIEW", "Edit clicked on " + selectedEntry.uid)
-                        true
-                    }
+//                    R.id.popup__edit -> {
+//                        Log.i("RECYCLER VIEW", "Edit clicked on " + selectedEntry.uid)
+//                        true
+//                    }
                     R.id.popup__delete -> {
                         Log.i("RECYCLER VIEW", "Delete clicked on " + selectedEntry.uid)
                         databaseRef.child("entries").child(userId).child(selectedEntry.uid).removeValue()

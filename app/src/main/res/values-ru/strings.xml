@@ -137,7 +137,7 @@
     <string name="slider_thumb">slider_thumb</string>
     <string name="tick">tick</string>
 
-    <string name="deletion_toast">Успешно удалено</string>
+    <string name="deletion_toast">Запись успешно удалена</string>
     <string name="get_entries_fail">Не удалось получить данные</string>
     <string name="no_entries">Нет записей за этот день</string>
     <string name="plus">+</string>
@@ -167,10 +167,12 @@
 
     <string name="mood_pie_chart_title">Настроение за последнюю неделю</string>
     <string name="tags_pie_chart_title">Наиболее популярные тэги за последнюю неделю</string>
+    <string name="tag_name_too_long">Название слишком длинное</string>
     <string name="notification_time_title">Время уведомлений</string>
     <string name="log_out_title">Выйти</string>
     <string name="confirm">Выбрать</string>
     <string name="cancel">Отмена</string>
+
     <string name="color_settings_title">Изменить цвета</string>
     <string name="very_bad_color_title">Очень плохое настроение</string>
     <string name="bad_color_title">Плохое настроение</string>
