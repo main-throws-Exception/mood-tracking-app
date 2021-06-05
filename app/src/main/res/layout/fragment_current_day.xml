@@ -56,7 +56,8 @@
         app:layout_constraintTop_toBottomOf="@id/fragment_current_day__back_arrow"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingBottom="70dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
