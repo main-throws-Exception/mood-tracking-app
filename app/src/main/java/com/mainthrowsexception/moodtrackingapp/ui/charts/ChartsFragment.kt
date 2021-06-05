@@ -189,6 +189,9 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
     }
 
     override fun onMoodLineReady(moodLines: ArrayList<Entry>) {
+        if (context == null) {
+            return
+        }
         Log.i("ChartsFragment", "onMoodLineReady called with data: " + moodLines.toString())
 
         moodLineList.clear()
@@ -234,6 +237,7 @@ class ChartsFragment : BaseFragment(), ChartsContract.View {
         }
 
         lineChart.invalidate()
+
     }
 
     override fun onTagsReady(tagsMap: HashMap<String, Int>) {
