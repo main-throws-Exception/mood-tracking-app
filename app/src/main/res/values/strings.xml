@@ -180,4 +180,7 @@
     <string name="good_color_title">Good mood</string>
     <string name="very_good_color_title">Very good mood</string>
     <string name="color_settings_key">color</string>
+    <string name="mood_colors_category_title">Mood colors</string>
+    <string name="reset_colors_title">Reset colors</string>
+    <string name="reset_colors_key" translatable="false">reset_colors</string>
 </resources>
