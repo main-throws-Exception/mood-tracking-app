@@ -16,9 +16,9 @@ class NotificationActionReceiver: BroadcastReceiver() {
 
         var mood: Int = -1
         when(intent?.action) {
-            "GOOD_BEHAVIOUR" -> mood = 5
-            "NEUTRAL_BEHAVIOUR" -> mood = 3
-            "BAD_BEHAVIOUR" -> mood = 1
+            "GOOD_BEHAVIOUR" -> mood = 4
+            "NEUTRAL_BEHAVIOUR" -> mood = 2
+            "BAD_BEHAVIOUR" -> mood = 0
         }
 
         createEntry(mood)
