@@ -6,7 +6,7 @@
         app:title="@string/mood_colors_category_title">
 
         <com.skydoves.colorpickerpreference.ColorPickerPreference
-            android:key="very_good_color_preference_key"
+            android:key="@string/very_good_color_preference_key"
             android:title="@string/very_good_color_title"
             app:preference_dialog_title="Toolbar ColorPickerDialog"
             app:preference_dialog_positive="@string/confirm"
@@ -17,7 +17,7 @@
             app:iconSpaceReserved="false"/>
 
         <com.skydoves.colorpickerpreference.ColorPickerPreference
-            android:key="good_color_preference_key"
+            android:key="@string/good_color_preference_key"
             android:title="@string/good_color_title"
             app:preference_dialog_title="Toolbar ColorPickerDialog"
             app:preference_dialog_positive="@string/confirm"
@@ -28,7 +28,7 @@
             app:iconSpaceReserved="false"/>
 
         <com.skydoves.colorpickerpreference.ColorPickerPreference
-            android:key="neutral_color_preference_key"
+            android:key="@string/neutral_color_preference_key"
             android:title="@string/neutral_color_title"
             app:preference_dialog_title="Toolbar ColorPickerDialog"
             app:preference_dialog_positive="@string/confirm"
@@ -39,7 +39,7 @@
             app:iconSpaceReserved="false"/>
 
         <com.skydoves.colorpickerpreference.ColorPickerPreference
-            android:key="bad_color_preference_key"
+            android:key="@string/bad_color_preference_key"
             android:title="@string/bad_color_title"
             app:preference_dialog_title="Toolbar ColorPickerDialog"
             app:preference_dialog_positive="@string/confirm"
@@ -50,7 +50,7 @@
             app:iconSpaceReserved="false"/>
 
         <com.skydoves.colorpickerpreference.ColorPickerPreference
-            android:key="very_bad_color_preference_key"
+            android:key="@string/very_bad_color_preference_key"
             android:title="@string/very_bad_color_title"
             app:preference_dialog_title="Toolbar ColorPickerDialog"
             app:preference_dialog_positive="@string/confirm"

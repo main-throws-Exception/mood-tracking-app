@@ -183,4 +183,9 @@
     <string name="mood_colors_category_title">Mood colors</string>
     <string name="reset_colors_title">Reset colors</string>
     <string name="reset_colors_key" translatable="false">reset_colors</string>
+    <string name="very_good_color_preference_key" translatable="false">very_good_color_preference_key</string>
+    <string name="good_color_preference_key" translatable="false">good_color_preference_key</string>
+    <string name="neutral_color_preference_key" translatable="false">neutral_color_preference_key</string>
+    <string name="bad_color_preference_key" translatable="false">bad_color_preference_key</string>
+    <string name="very_bad_color_preference_key" translatable="false">very_bad_color_preference_key</string>
 </resources>
